@@ -13,7 +13,7 @@ function Table(){
     return(
         <>
         <div>
-            <table className="min-w-full border border-gray-300 m-1">
+            <table className="min-w-full border border-gray-300 m-1 bg-red-100">
           <thead>
             <tr className="bg-gray-200">
               <th className="border p-2">ID</th>
