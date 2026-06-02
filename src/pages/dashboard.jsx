@@ -152,7 +152,7 @@ function Dashboard() {
 
           <div className="mt-5 flex flex-wrap gap-4">
 
-            <button className="px-5 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
+            <button className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 transition">
               Manage Users
             </button>
 
