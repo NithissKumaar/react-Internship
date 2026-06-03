@@ -16,4 +16,4 @@ function SkeletonRow() {
   );
 }
 
-export default SkeletonRow;
+export default SkeletonRow

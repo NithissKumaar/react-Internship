@@ -10,7 +10,7 @@ function DropDown(){
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(prev => !prev)}
-                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors duration-200"
+                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors duration-200 cursor-pointer"
               >
                 {/* Avatar circle */}
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-xs font-semibold shadow-sm">
@@ -51,4 +51,4 @@ function DropDown(){
     );
 }
 
-export default DropDown;
+export default DropDown

@@ -100,17 +100,22 @@ function UserTable() {
 
                       {/* Action buttons */}
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                          <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-blue-600
-                                             bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-100 transition-colors duration-150">
-                            <Eye size={12} /> View
-                          </button>
-                          <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600
-                                             bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-200 transition-colors duration-150">
-                            <Pencil size={12} /> Edit
-                          </button>
-                        </div>
-                      </td>
+                        <div className="flex items-center gap-2">
+                        <button
+                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-blue-600
+                                bg-blue-100 rounded-lg border border-blue-100 transition-colors duration-150 cursor-pointer"
+                        >
+                        <Eye size={12} /> View
+                        </button>
+
+                        <button
+                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600
+                                bg-slate-200 rounded-lg border border-slate-200 transition-colors duration-150 cursor-pointer"
+    >
+                        <Pencil size={12} /> Edit
+                        </button>
+                      </div>
+                    </td>
                     </tr>
                   ))
             }
@@ -138,4 +143,4 @@ function UserTable() {
   );
 }
 
-export default UserTable;
+export default UserTable

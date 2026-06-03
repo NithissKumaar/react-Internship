@@ -17,4 +17,4 @@ function EmptyState({ query }) {
   );
 }
 
-export default EmptyState;
+export default EmptyState

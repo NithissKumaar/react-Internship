@@ -21,7 +21,7 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-slate-50">
 
-      <Navbar />
+     
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
@@ -43,7 +43,7 @@ function Dashboard() {
               Manage users, monitor activities, and access your dashboard insights in one place.
             </p>
 
-            <button className="mt-3 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-blue-600 font-semibold hover:scale-[1.02] transition">
+            <button className="mt-3 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-blue-600 font-semibold hover:scale-[1.02] transition cursor-pointer">
               Explore Dashboard
               <ArrowRight size={18} />
             </button>
@@ -170,4 +170,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Dashboard

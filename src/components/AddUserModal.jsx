@@ -1,104 +1,102 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 function AddUserModal({ close }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [website, setWebsite] = useState("");
-
-  const submit = (e) => {
-    e.preventDefault();
-
-    alert(`User Added\nName: ${name}\nEmail: ${email}`);
+  const submit = (data) => {
+    alert(
+      `User Added\nName: ${data.name}\nEmail: ${data.email}`
+    );
 
     close();
   };
 
   return (
     <div className="fixed inset-0 bg-black/30 flex items-center justify-center">
-
       <div className="bg-white rounded-2xl p-6 w-[400px]">
-
         <h2 className="text-xl font-bold mb-5">
           Add User
         </h2>
 
         <form
-          onSubmit={submit}
+          onSubmit={handleSubmit(submit)}
           className="space-y-4"
         >
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              {...register("name", {
+                required: "Name is required",
+              })}
+              className="w-full p-3 border rounded-xl"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.name.message}
+              </p>
+            )}
+          </div>
 
           <input
             type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) =>
-              setName(e.target.value)
-            }
-            className="w-full p-3 border rounded-xl"
-          />
-          <input
-            type="text"
-            placeholder="User Name"
-            value={username}
-            onChange={(e) =>
-              setUsernameame(e.target.value)
-            }
+            placeholder="Username"
+            {...register("username")}
             className="w-full p-3 border rounded-xl"
           />
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
-            className="w-full p-3 border rounded-xl"
-          />
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email is required",
+              })}
+              className="w-full p-3 border rounded-xl"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
           <input
             type="text"
             placeholder="Phone Number"
-            value={phone}
-            onChange={(e) =>
-              setPhone(e.target.value)
-            }
+            {...register("phone")}
             className="w-full p-3 border rounded-xl"
           />
+
           <input
             type="text"
-            placeholder="website"
-            value={website}
-            onChange={(e) =>
-              setWebsite(e.target.value)
-            }
+            placeholder="Website"
+            {...register("website")}
             className="w-full p-3 border rounded-xl"
           />
 
           <div className="flex justify-end gap-3">
-
             <button
               type="button"
               onClick={close}
-              className="px-4 py-2 border rounded-xl"
+              className="px-4 py-2 border rounded-xl cursor-pointer hover:bg-slate-100  active:scale-[0.95]"
             >
               Cancel
             </button>
 
             <button
-              className="px-4 py-2 bg-blue-600 text-white rounded-xl"
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-xl cursor-pointer hover:bg-blue-700  active:scale-[0.95]"
             >
               Save
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
   );
 }
