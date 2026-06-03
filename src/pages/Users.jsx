@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Plus, Users as UsersIcon } from 'lucide-react';
-import Navbar from '../components/Navbar';
-import UserTable from '../components/UserTable';
-import AddUserModal from "../components/AddUserModal";
+import Navbar from '../Layouts/Navbar';
+import UserTable from '../components/UserTable/UserTable';
+import AddUserModal from "../components/hookForm/AddUserModal";
 
 function Users() {
      const [open, setOpen] = useState(false);

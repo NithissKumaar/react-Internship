@@ -1,5 +1,5 @@
 import { Users,LayoutDashboard,Activity,ArrowRight } from "lucide-react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Layouts/Navbar";
 import { useEffect, useState } from "react";
 
 function Dashboard() {

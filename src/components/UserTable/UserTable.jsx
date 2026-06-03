@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Eye, Pencil, Search, SlidersHorizontal } from 'lucide-react';
-import SearchBar from './SearchBar';
+import SearchBar from '../ToolComponents/SearchBar';
 import EmptyState from './EmptySearch';
-import SkeletonRow from './SkeletonRow';
-import ToolBar from './ToolBar';
+import SkeletonRow from '../ToolComponents/SkeletonRow';
+import ToolBar from '../ToolComponents/ToolBar';
 
 function UserTable() {
   const [users,   setUsers]   = useState([]);

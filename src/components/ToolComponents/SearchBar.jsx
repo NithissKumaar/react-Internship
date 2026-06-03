@@ -6,14 +6,14 @@ function SearchBar({ search, setSearch }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
 
-  {/* Title Section */}
+  
   <div>
     <h2 className="text-2xl font-bold text-slate-800">
       Employee Details
     </h2>
   </div>
 
-  {/* Search Bar */}
+  
   <div className="relative w-full sm:w-80 left-145">
     <Search
       size={18}
