@@ -25,7 +25,7 @@ function Sidebar({ isOpen, onClose }) {
   flex flex-col
   ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
 >
-        {/* Header */}
+       
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="font-semibold text-lg">Menu</h2>
 
@@ -37,7 +37,7 @@ function Sidebar({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Navigation */}
+        {/* Dashboard are listed with map given */}
         <nav className="p-3 flex-1">
           {navLinks.map(({ to, label, icon: Icon }) => (
             <Link
@@ -56,7 +56,7 @@ function Sidebar({ isOpen, onClose }) {
           ))}
         </nav>
 
-        {/* Sign Out */}
+        
         <div className="p-3  ">
           <Link
             to="/"

@@ -6,7 +6,7 @@ function DropDown(){
     const [dropdownOpen, setDropdownOpen] = useState(false);
     return(
         <>
-        {/* User Avatar Dropdown */}
+        
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(prev => !prev)}
