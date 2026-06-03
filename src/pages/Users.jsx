@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users as UsersIcon } from 'lucide-react';
+import { Plus, Users as UsersIcon } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import UserTable from '../components/UserTable';
 import AddUserModal from "../components/AddUserModal";
@@ -8,7 +8,7 @@ function Users() {
      const [open, setOpen] = useState(false);
   return (
     <div className="min-h-screen bg-slate-50">
-      <Navbar />
+      
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
 
@@ -27,8 +27,8 @@ function Users() {
           <button onClick={() => setOpen(true)}
           className="flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white
                              bg-blue-600 hover:bg-blue-700 active:scale-[0.98] rounded-xl shadow-md shadow-blue-200
-                             transition-all duration-200">
-            + Add User
+                             transition-all duration-200 cursor-pointer">
+            <Plus size={17}/>Add User
           </button>
         </div>
 
@@ -49,4 +49,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Users

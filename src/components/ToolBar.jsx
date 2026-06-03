@@ -11,21 +11,11 @@ function ToolBar({search,setSearch}){
 
   <SearchBar search={search} setSearch={setSearch} />
 
-  <button
-    onClick={() => setFilterOpen((prev) => !prev)}
-    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border transition-all duration-200 ${
-      filterOpen
-        ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-200"
-        : "bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50"
-    }`}
-  >
-    <SlidersHorizontal size={15} />
-    Filters
-  </button>
+  
 
 </div>
 </>
     );
 }
 
-export default ToolBar;
+export default ToolBar
