@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Eye, Pencil, Search, SlidersHorizontal } from 'lucide-react';
-import SearchBar from './SearchBar';
+import SearchBar from '../ToolComponents/SearchBar';
 import EmptyState from './EmptySearch';
-import SkeletonRow from './SkeletonRow';
-import ToolBar from './ToolBar';
+import SkeletonRow from '../ToolComponents/SkeletonRow';
+import ToolBar from '../ToolComponents/ToolBar';
 
 function UserTable() {
   const [users,   setUsers]   = useState([]);
@@ -20,7 +20,7 @@ function UserTable() {
       .catch(() => setLoading(false));
   }, []);
 
-  // Filter users by search query (name, email, username)
+  // Filter users by search query name, email, username
   const filtered = users.filter(u =>
     [u.name, u.email, u.username].some(f =>
       f.toLowerCase().includes(search.toLowerCase())
@@ -31,11 +31,11 @@ function UserTable() {
     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <ToolBar search={search} setSearch={setSearch} />
 
-    {/* ── Responsive Scroll Wrapper ── */}
+    
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
 
-          {/* Table Head */}
+          
           <thead>
             <tr className="bg-slate-50 border-b border-slate-100">
               {['#', 'Name', 'Username', 'Email', 'Phone', 'Website', 'Actions'].map(h => (
@@ -46,7 +46,7 @@ function UserTable() {
             </tr>
           </thead>
 
-          {/* Table Body */}
+          
           <tbody className="divide-y divide-slate-100">
             {loading? [...Array(6)].map((_, i) => <SkeletonRow key={i} />): filtered.length === 0
                 ? <EmptyState query={search} />
@@ -123,7 +123,7 @@ function UserTable() {
         </table>
       </div>
 
-      {/* ── Footer row count ── */}
+      
       {!loading && (
         <div className="px-6 py-3.5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
           <p className="text-xs text-slate-400">

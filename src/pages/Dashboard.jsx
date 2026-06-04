@@ -1,5 +1,5 @@
 import { Users,LayoutDashboard,Activity,ArrowRight } from "lucide-react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Layouts/Navbar";
 import { useEffect, useState } from "react";
 
 function Dashboard() {
@@ -152,11 +152,11 @@ function Dashboard() {
 
           <div className="mt-5 flex flex-wrap gap-4">
 
-            <button className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 transition">
+            <button className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 transition cursor-pointer">
               Manage Users
             </button>
 
-            <button className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 transition">
+            <button className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50 transition cursor-pointer">
               View Reports
             </button>
 

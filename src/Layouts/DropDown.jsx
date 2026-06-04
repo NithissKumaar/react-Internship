@@ -6,7 +6,7 @@ function DropDown(){
     const [dropdownOpen, setDropdownOpen] = useState(false);
     return(
         <>
-        {/* User Avatar Dropdown */}
+        
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(prev => !prev)}
@@ -31,7 +31,7 @@ function DropDown(){
                     <p className="text-xs text-slate-500 truncate">admin@gmail.com</p>
                   </div>
                   <Link
-                    to="/dashboard"
+                    to="/Profile"
                     onClick={() => setDropdownOpen(false)}
                     className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors"
                   >

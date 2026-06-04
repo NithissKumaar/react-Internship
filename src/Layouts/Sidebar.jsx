@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Users, X } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, X } from "lucide-react";
 
 const navLinks = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -19,10 +19,13 @@ function Sidebar({ isOpen, onClose }) {
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50
-        transition-transform duration-300
-        ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
-      >
+  className={`fixed top-16 left-0 h-[calc(100vh-64px)] w-64
+  bg-white shadow-xl z-40
+  transition-transform duration-300
+  flex flex-col
+  ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+>
+       
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="font-semibold text-lg">Menu</h2>
 
@@ -34,7 +37,8 @@ function Sidebar({ isOpen, onClose }) {
           </button>
         </div>
 
-        <nav className="p-3">
+        {/* dashboard are listed with map given */}
+        <nav className="p-3 flex-1">
           {navLinks.map(({ to, label, icon: Icon }) => (
             <Link
               key={to}
@@ -51,6 +55,18 @@ function Sidebar({ isOpen, onClose }) {
             </Link>
           ))}
         </nav>
+
+        
+        <div className="p-3  ">
+          <Link
+            to="/"
+            onClick={onClose}
+            className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition-colors text-center"
+          >
+            <LogOut size={18} />
+            Sign Out
+          </Link>
+        </div>
       </aside>
     </>
   );
