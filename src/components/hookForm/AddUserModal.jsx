@@ -18,7 +18,7 @@ function AddUserModal({ close }) {
 
       <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl">
 
-        {/* Header */}
+        
         <div className="flex justify-between items-center p-6 border-b">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest">
@@ -38,41 +38,86 @@ function AddUserModal({ close }) {
           </button>
         </div>
 
-        {/* Form */}
+        
         <form onSubmit={handleSubmit(submit)} className="p-5">
 
   <div className="grid grid-cols-2 gap-3">
-
-    <input
+    <div  className="flex flex-col gap-1">
+      <input
       placeholder="Full Name"
-      {...register("name", { required: true })}
+      {...register("name", {
+         required: "Name is required" })}
       className="h-10 px-3 rounded-lg border bg-slate-50 text-sm"
     />
+    {errors.name && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.name.message}
+              </p>
+            )}
 
-    <input
+
+    </div>
+    <div  className="flex flex-col gap-1">
+      <input
       placeholder="Username"
-      {...register("username")}
+      {...register("username",{required : "Usernmae is required"})}
       className="h-10 px-3 rounded-lg border bg-slate-50 text-sm"
     />
+    {errors.username && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.username.message}
+              </p>
+            )}
 
-    <input
+    </div>
+    
+    
+            <div  className="flex flex-col gap-1">
+              <input
       type="email"
       placeholder="Email"
-      {...register("email", { required: true })}
+      {...register("email", {required : "Email is required"})}
       className="h-10 px-3 rounded-lg border bg-slate-50 text-sm"
     />
+    {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
 
-    <input
+            </div>
+
+    
+            <div  className="flex flex-col gap-1">
+              <input
       placeholder="Phone"
-      {...register("phone")}
+      {...register("phone",{required : "Phone is required"})}
       className="h-10 px-3 rounded-lg border bg-slate-50 text-sm"
     />
+    {errors.phone && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.phone.message}
+              </p>
+            )}
 
-    <input
+            </div>
+
+    
+            <div  className="flex flex-col gap-1">
+              <input
       placeholder="Website"
-      {...register("website")}
+      {...register("website",{required : "Website is required"})}
       className="col-span-1 h-10 px-3 rounded-lg border bg-slate-50 text-sm"
     />
+    {errors.website && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.website.message}
+              </p>
+            )}
+
+            </div>
+
+    
 
   </div>
 

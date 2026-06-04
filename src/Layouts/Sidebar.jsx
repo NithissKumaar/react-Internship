@@ -37,7 +37,7 @@ function Sidebar({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Dashboard are listed with map given */}
+        {/* dashboard are listed with map given */}
         <nav className="p-3 flex-1">
           {navLinks.map(({ to, label, icon: Icon }) => (
             <Link

@@ -20,7 +20,7 @@ function UserTable() {
       .catch(() => setLoading(false));
   }, []);
 
-  // Filter users by search query (name, email, username)
+  // Filter users by search query name, email, username
   const filtered = users.filter(u =>
     [u.name, u.email, u.username].some(f =>
       f.toLowerCase().includes(search.toLowerCase())
