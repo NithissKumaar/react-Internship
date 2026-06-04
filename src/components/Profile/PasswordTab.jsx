@@ -20,7 +20,7 @@ function PasswordTab() {
           className="w-full h-12 px-4 border rounded-xl"
         />
 
-        <button className="bg-blue-600 text-white px-8 h-12 rounded-xl">
+        <button className="bg-blue-600 text-white px-8 h-12 rounded-xl cursor-pointer">
           Update Password
         </button>
 
