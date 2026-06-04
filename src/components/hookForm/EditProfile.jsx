@@ -15,18 +15,14 @@ function EditProfile({ user, setUser, close }) {
       ...user,
       ...data,
     });
-
     close();
   };
 
   return (
     <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+      <div className="bg-white rounded-3xl w-full max-w-lg p-6">
 
-      <div className="bg-white rounded-3xl w-full max-w-md p-6">
-
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
-
           <div>
             <h2 className="text-2xl font-bold">
               Edit Profile
@@ -37,75 +33,72 @@ function EditProfile({ user, setUser, close }) {
             </p>
           </div>
 
-          <button
-            onClick={close}
-            className="cursor-pointer"
-          >
+          <button onClick={close} className="cursor-pointer">
             <X />
           </button>
-
         </div>
 
-        <form
-          onSubmit={handleSubmit(submit)}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit(submit)} className="space-y-4">
 
-          {/* Name */}
+          <input
+            value={user.username}
+            disabled
+            className="w-full h-11 px-4 rounded-xl border bg-slate-100"
+          />
+
           <div>
             <input
-              placeholder="Name"
-              {...register("name", {
-                required: "Name required",
+              placeholder="First Name"
+              {...register("firstName", {
+                required: "First name required",
               })}
               className="w-full h-11 px-4 rounded-xl border"
             />
 
-            {errors.name && (
-              <p className="text-xs text-red-500 mt-1">
-                {errors.name.message}
+            {errors.firstName && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.firstName.message}
               </p>
             )}
           </div>
 
-          {/* Email Disabled */}
+          <input
+            placeholder="Last Name"
+            {...register("lastName")}
+            className="w-full h-11 px-4 rounded-xl border"
+          />
+
           <input
             value={user.email}
             disabled
             className="w-full h-11 px-4 rounded-xl border bg-slate-100 text-slate-500"
           />
 
-          {/* Phone */}
-          <div>
-            <input
-              placeholder="Phone"
-              {...register("phone")}
-              className="w-full h-11 px-4 rounded-xl border"
-            />
-          </div>
+          <input
+            placeholder="Phone"
+            {...register("phone")}
+            className="w-full h-11 px-4 rounded-xl border"
+          />
 
-          {/* Website */}
-          <div>
-            <input
-              placeholder="Website"
-              {...register("website")}
-              className="w-full h-11 px-4 rounded-xl border"
-            />
-          </div>
+          <input
+            placeholder="Website"
+            {...register("website")}
+            className="w-full h-11 px-4 rounded-xl border"
+          />
 
           <div className="flex justify-end gap-3 pt-4">
 
             <button
               type="button"
               onClick={close}
-              className="px-5 h-11 border rounded-xl cursor-pointer hover:bg-slate-50"
+              className="px-5 h-11 border rounded-xl hover:bg-slate-50 cursor-pointer"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="px-5 h-11 bg-blue-600 text-white rounded-xl cursor-pointer hover:bg-blue-700"
+              className="px-5 h-11 bg-blue-600 text-white rounded-xl hover:bg-blue-700 cursor-pointer"
             >
               Save
             </button>
@@ -115,7 +108,6 @@ function EditProfile({ user, setUser, close }) {
         </form>
 
       </div>
-
     </div>
   );
 }
