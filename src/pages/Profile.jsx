@@ -1,89 +1,98 @@
 import { useState } from "react";
-import {User,Mail,Phone,Globe,Pencil,} from "lucide-react";
+import PasswordTab from "../components/Profile/PasswordTab";
+import ProfileTab from "../components/Profile/ProfileTab";
+import ActivityTab from "../components/Profile/ActivityTab";
+import { Pencil } from "lucide-react";
+
+import Field, {
+  profileFields,
+} from "../components/Profile/ProfileFields";
 
 import EditProfile from "../components/hookForm/EditProfile";
 
 function Profile() {
   const [open, setOpen] = useState(false);
 
-  const [user, setUser] = useState({
-    name: "Admin User",
-    email: "admin@gmail.com",
-    phone: "+91 9876543210",
-    website: "www.admin.com",
-  });
+  const [tab, setTab] = useState("profile");
 
-  const details = [
-    { icon: <User size={18} />, value: user.name },
-    { icon: <Mail size={18} />, value: user.email },
-    { icon: <Phone size={18} />, value: user.phone },
-    { icon: <Globe size={18} />, value: user.website },
-  ];
+  const [user, setUser] = useState({
+  username: "admin",
+  firstName: "Nithiss",
+  lastName: "Kumaar",
+  email: "admin@gmail.com",
+  phone: "+91 XXXXXXXXXX",
+  website: "www.admin.com",
+});
+
+  const fields = profileFields(user);
 
   return (
     <>
-      <div className="min-h-screen bg-slate-100 rounded-xl p-6">
+      <div className="min-h-screen bg-slate-100 p-6">
 
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[300px_1fr] gap-6">
+        <div className="max-w-6xl mx-auto bg-white rounded-3xl p-8">
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm border">
+          {/* Tabs */}
+          <div className="flex gap-10 border-b pb-4">
 
-            <div className="flex flex-col items-center">
+            <button
+              onClick={() => setTab("profile")}
+              className={`
+                pb-2 cursor-pointer transition
+                ${
+                  tab === "profile"
+                    ? "text-blue-600 border-b-2 border-blue-600"
+                    : "text-slate-500 hover:text-blue-500"
+                }
+              `}
+            >
+              Profile
+            </button>
 
-              <div className="w-28 h-28 rounded-full bg-blue-500 text-white flex items-center justify-center text-3xl font-bold">
-                AD
-              </div>
+            <button
+              onClick={() => setTab("password")}
+              className={`
+                pb-2 cursor-pointer transition
+                ${
+                  tab === "password"
+                    ? "text-blue-600 border-b-2 border-blue-600"
+                    : "text-slate-500 hover:text-blue-500"
+                }
+              `}
+            >
+              Password
+            </button>
 
-              <h1 className="mt-5 text-2xl font-bold">
-                {user.name}
-              </h1>
-
-              <p className="text-slate-500">
-                Frontend Developer
-              </p>
-
-              <button
-                onClick={() => setOpen(true)}
-                className="mt-6 px-5 h-11 rounded-xl bg-blue-600 text-white flex items-center gap-2 cursor-pointer"
-              >
-                <Pencil size={16} />
-                Edit Profile
-              </button>
-
-            </div>
-
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 border">
-
-            <h2 className="text-xl font-semibold mb-6">
-              Personal Details
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-4">
-
-              {details.map((item, i) => (
-                <div
-                  key={i}
-                  className="border rounded-2xl p-5"
-                >
-                  <div className="flex gap-3">
-
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
-                      {item.icon}
-                    </div>
-
-                    <p className="font-medium">
-                      {item.value}
-                    </p>
-
-                  </div>
-                </div>
-              ))}
-
-            </div>
+            <button
+              onClick={() => setTab("activity")}
+              className={`
+                pb-2 cursor-pointer transition
+                ${
+                  tab === "activity"
+                    ? "text-blue-600 border-b-2 border-blue-600"
+                    : "text-slate-500 hover:text-blue-500"
+                }
+              `}
+            >
+              Account Activity
+            </button>
 
           </div>
+
+          {tab === "profile" &&
+            <ProfileTab
+               user={user}
+                setOpen={setOpen}
+            />
+          }
+
+          {tab === "password" &&
+              <PasswordTab />
+            }
+
+          {tab === "activity" &&
+            <ActivityTab />
+            }
 
         </div>
 
