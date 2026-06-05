@@ -10,6 +10,7 @@ function Layout() {
 
   return (
     <>
+    <div className="min-h-screen flex flex-col">
       <Navbar sidebarOpen={sidebarOpen}
       onMenuClick={() => setSidebarOpen(true)} />
 
@@ -19,10 +20,13 @@ function Layout() {
       />
       
       
-      <main className="p-6">
+      <main className="flex-1 p-6">
         <Outlet />
       </main>
       <Footer />
+
+    </div>
+      
     </>
   );
 }

@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Users, LogOut, X } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, X ,Contact} from "lucide-react";
 
 const navLinks = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/users", label: "Users", icon: Users },
+  { to: "/employe",label: "Employe",icon: Contact}
 ];
 
 function Sidebar({ isOpen, onClose }) {
