@@ -1,5 +1,5 @@
 import { useForm, useFieldArray } from "react-hook-form";
-
+import { showSuccess } from "../../utils/toast";
 export default function useFamilyContactForm() {
   const {
     register,
@@ -52,6 +52,9 @@ export default function useFamilyContactForm() {
       profession: "",
       emergency: false,
     });
+    showSuccess(
+                "New Row Added."
+              );
   };
 
   const deleteRow = (index) => {
