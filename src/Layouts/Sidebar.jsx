@@ -27,7 +27,7 @@ function Sidebar({ isOpen, onClose }) {
   ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
 >
        
-        <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center justify-between p-4 border-b border-slate-200">
           <h2 className="font-semibold text-lg">Menu</h2>
 
           <button

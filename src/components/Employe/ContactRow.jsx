@@ -2,7 +2,8 @@ import ActionButtons from "./ActionButtons";
 import { relations } from "../../constants/relationOptions";
 
 function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
-  const input ="border p-2 rounded w-full";
+  const input =
+  "w-full p-2 rounded-lg border border-slate-400 bg-white text-slate-700 outline-none transition focus:border-blue-300 focus:ring-1 focus:ring-blue-100 disabled:bg-slate-400";
 
   const error = (field) =>
     errors?.contacts?.[index]?.[
@@ -83,10 +84,11 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       </td>
 
       <td className="p-3">
-        <div className="min-h-[20px]">
+        <div className="min-h-[20px]  ">
         <select
           disabled={!editable}
-          className={input}
+          className={`${input} ${editable ? "cursor-pointer" : "cursor-not-allowed"}`}
+           
           {...register(
             `contacts.${index}.relation`,
             {
@@ -103,6 +105,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
             <option
               key={r}
               value={r}
+            
             >
               {r}
             </option>
