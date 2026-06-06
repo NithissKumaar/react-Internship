@@ -1,9 +1,10 @@
 import ActionButtons from "./ActionButtons";
+
 import { relations } from "../../constants/relationOptions";
 
 function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
   const input =
-  "w-full p-2 rounded-lg border border-slate-400 bg-white text-slate-700 outline-none transition focus:border-blue-300 focus:ring-1 focus:ring-blue-100 disabled:bg-slate-400";
+"w-full p-2 rounded-lg border border-slate-200 bg-white text-slate-700 outline-none transition-all duration-200 focus:bg-white focus:border-blue-300 focus:ring-1 focus:ring-blue-200 disabled:bg-slate-50 disabled:border-slate-100";
 
   const error = (field) =>
     errors?.contacts?.[index]?.[
@@ -20,6 +21,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       <td className="p-3">
         <div className="min-h-[20px]">
         <input
+        autoComplete="off"
           disabled={!editable}
           placeholder="Name"
           className={input}
@@ -40,6 +42,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       <td className="p-3">
         <div className="min-h-[20px]">
         <input
+        autoComplete="off"
           disabled={!editable}
           placeholder="Mobile"
           className={input}
@@ -66,6 +69,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       <td className="p-3">
         <div className="min-h-[20px]">
         <input
+        autoComplete="off"
           type="date"
           disabled={!editable}
           className={input}
@@ -121,6 +125,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       <td className="p-3">
         <div className="min-h-[20px]">
         <input
+        autoComplete="off"
           disabled={!editable}
           placeholder="Profession"
           className={input}
@@ -142,6 +147,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
       <td className="text-center">
         <div className="min-h-[20px]">
         <input
+        
           type="checkbox"
           className="cursor-pointer"
           disabled={!editable}
@@ -157,6 +163,7 @@ function ContactRow({index,register,errors,editable,addRow,deleteRow,}) {
           editable={editable}
           onAdd={() =>
             addRow(index)
+            
           }
           onDelete={() =>
             deleteRow(index)

@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { showSuccess } from "../../utils/toast";
 
 function EditProfile({ user, setUser, close }) {
   const {
@@ -16,6 +17,10 @@ function EditProfile({ user, setUser, close }) {
       ...data,
     });
     close();
+    showSuccess(
+    "Profile Updated"
+  );
+
   };
 
   return (
@@ -38,7 +43,7 @@ function EditProfile({ user, setUser, close }) {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit(submit)} className="space-y-4">
+        <form autoComplete="off" onSubmit={handleSubmit(submit)} className="space-y-4">
 
           <input
             value={user.username}

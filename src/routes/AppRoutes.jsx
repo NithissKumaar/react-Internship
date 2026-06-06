@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "../Layouts/Layouts";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
@@ -9,8 +10,19 @@ import Employe from "../pages/Employe";
 
 function AppRoutes() {
   return (
+    <>
+    
+    <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="light"
+      />
     <Routes>
-
+      
      
       <Route path="/" element={<Login />} />
 
@@ -27,6 +39,7 @@ function AppRoutes() {
       
 
     </Routes>
+    </>
   );
 }
 

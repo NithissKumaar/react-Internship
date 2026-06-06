@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { showSuccess } from "../../utils/toast";
 import { X } from "lucide-react";
 
 function AddUserModal({ close }) {
@@ -9,12 +10,16 @@ function AddUserModal({ close }) {
   } = useForm();
 
   const submit = (data) => {
-    alert(`User Added\n${data.name}`);
-    close();
-  };
+  showSuccess(
+    "New User added successfully"
+  );
 
-  const input =
-    "h-10 px-3 rounded-lg border border-slate-400 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-blue-200 focus:ring-1 focus:ring-blue-200";
+  close();
+};
+
+  
+const input =
+"w-full h-10 px-3 rounded-lg border border-slate-200 bg-white text-sm outline-none transition focus:bg-white focus:border-blue-300 focus:ring-1 focus:ring-blue-200";
 
   return (
     <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
@@ -43,6 +48,7 @@ function AddUserModal({ close }) {
         </div>
 
         <form
+        autoComplete="off"
           onSubmit={handleSubmit(submit)}
           className="p-5"
         >
