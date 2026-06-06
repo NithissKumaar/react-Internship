@@ -43,7 +43,7 @@ function EditProfile({ user, setUser, close }) {
           <input
             value={user.username}
             disabled
-            className="w-full h-11 px-4 rounded-xl border bg-slate-100"
+            className="w-full h-11 px-4 rounded-xl border bg-slate-100 border border-slate-400 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-slate-200 focus:ring-1 focus:ring-slate-200"
           />
 
           <div>
@@ -52,7 +52,7 @@ function EditProfile({ user, setUser, close }) {
               {...register("firstName", {
                 required: "First name required",
               })}
-              className="w-full h-11 px-4 rounded-xl border"
+              className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200"
             />
 
             {errors.firstName && (
@@ -65,25 +65,25 @@ function EditProfile({ user, setUser, close }) {
           <input
             placeholder="Last Name"
             {...register("lastName")}
-            className="w-full h-11 px-4 rounded-xl border"
+            className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200"
           />
 
           <input
             value={user.email}
             disabled
-            className="w-full h-11 px-4 rounded-xl border bg-slate-100 text-slate-500"
+            className="w-full h-11 px-4 rounded-xl border bg-slate-100 border border-slate-400 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-slate-200 focus:ring-1 focus:ring-slate-200"
           />
 
           <input
             placeholder="Phone"
             {...register("phone")}
-            className="w-full h-11 px-4 rounded-xl border"
+            className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200"
           />
 
           <input
             placeholder="Website"
             {...register("website")}
-            className="w-full h-11 px-4 rounded-xl border"
+            className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm w-full outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200"
           />
 
           <div className="flex justify-end gap-3 pt-4">
@@ -91,7 +91,7 @@ function EditProfile({ user, setUser, close }) {
             <button
               type="button"
               onClick={close}
-              className="px-5 h-11 border rounded-xl hover:bg-slate-50 cursor-pointer"
+              className="px-5 h-11 border border-slate-400 rounded-xl hover:bg-slate-50 cursor-pointer"
             >
               Cancel
             </button>

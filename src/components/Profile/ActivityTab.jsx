@@ -8,11 +8,11 @@ function ActivityTab() {
 
       <div className="space-y-4 mt-8">
 
-        <div className="border rounded-xl p-4">
+        <div className="border border-slate-500 rounded-xl p-4">
           Logged in today
         </div>
 
-        <div className="border rounded-xl p-4">
+        <div className="border border-slate-500 rounded-xl p-4">
           Edited profile yesterday
         </div>
 
