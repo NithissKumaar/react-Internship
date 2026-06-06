@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { showSuccess } from "../../utils/toast";
 import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 
 function LoginForm() {
@@ -26,13 +27,21 @@ function LoginForm() {
       data.email === "admin@gmail.com" &&
       data.password === "1234"
     ) {
-      navigate("/dashboard");
+      navigate("/dashboard",{
+        state: {
+        sidebarOpen: true,
+      },
+      });
     } else {
       setError(
         "Invalid email or password. Try admin@gmail.com / 1234"
       );
       setLoading(false);
     }
+    showSuccess(
+        "Login successfully"
+      );
+
   };
 
   return (
