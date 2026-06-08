@@ -7,6 +7,8 @@ import Dashboard from "../pages/Dashboard";
 import Users from "../pages/Users";
 import Profile from "../pages/Profile";
 import Employe from "../pages/Employe";
+import Projects from "../pages/Projects"
+import AddProject from "../pages/AddProject";
 
 function AppRoutes() {
   return (
@@ -32,6 +34,8 @@ function AppRoutes() {
         <Route path="/users" element={<Users />} />
         <Route path="/profile" element={<Profile />} />
         <Route  path="/employe"  element={<Employe/>} />
+        <Route path="/projects" element={<Projects></Projects>}/>
+        <Route path="/projects/add" element={<AddProject />} />
       </Route>
 
       
