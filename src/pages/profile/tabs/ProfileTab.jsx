@@ -1,6 +1,6 @@
 import Field, {
   profileFields,
-} from "./ProfileFields";
+} from "../ProfileFields";
 
 import { Pencil } from "lucide-react";
 

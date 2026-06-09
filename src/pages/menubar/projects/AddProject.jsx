@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addProject } from "../redux/projectSlice";
+import { addProject } from "../../../redux/reducer/ProjectReducer";
 export default function AddProject() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

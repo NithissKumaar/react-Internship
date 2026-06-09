@@ -1,10 +1,10 @@
 import { useState } from "react";
-import PasswordTab from "../components/Profile/PasswordTab";
-import ProfileTab from "../components/Profile/ProfileTab";
-import ActivityTab from "../components/Profile/ActivityTab";
+import PasswordTab from "./tabs/PasswordTab";
+import ProfileTab from "./tabs/ProfileTab";
+import ActivityTab from "./tabs/ActivityTab";
 import { Pencil } from "lucide-react";
-import Field, {profileFields,} from "../components/Profile/ProfileFields";
-import EditProfile from "../components/hookForm/EditProfile";
+import Field, {profileFields,} from "./ProfileFields";
+import EditProfile from "../../components/hookForm/EditProfile";
 
 function Profile() {
   const [open, setOpen] = useState(false);

@@ -1,186 +1,425 @@
-import { useForm } from "react-hook-form";
-import { showSuccess } from "../../utils/toast";
-import { X } from "lucide-react";
+import {
+useForm
+}
+from "react-hook-form";
 
-function AddUserModal({ close }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+import {
+showSuccess
+}
+from "../../utils/toast";
 
-  const submit = (data) => {
-  showSuccess(
-    "New User added successfully"
-  );
+import {
+useNavigate
+}
+from "react-router-dom";
 
-  close();
+import {
+ArrowLeft,
+UserPlus,
+Save,
+} from "lucide-react";
+
+function AddUser(){
+
+const navigate=
+useNavigate();
+
+const{
+
+register,
+
+handleSubmit,
+
+formState:{
+errors,
+},
+
+}=
+
+useForm({
+
+mode:
+"onChange",
+
+});
+
+const submit=
+(data)=>{
+
+showSuccess(
+"New User added successfully"
+);
+
+navigate(
+"/users"
+);
+
 };
 
-  
-const input =
-"w-full h-10 px-3 rounded-lg border border-slate-200 bg-white text-sm outline-none transition focus:bg-white focus:border-blue-300 focus:ring-1 focus:ring-blue-200";
+const input=
+`w-full
+h-12
+px-4
+rounded-xl
+border
+border-slate-200
+bg-white
+text-sm
+outline-none
+transition
+focus:border-blue-500
+focus:ring-2
+focus:ring-blue-100`;
 
-  return (
-    <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
+return(
 
-      <div className="bg-white rounded-3xl shadow-lg w-full max-w-2xl">
+<div className="min-h-screen bg-slate-50">
 
-        <div className="flex justify-between items-center p-6 border-b border-slate-200">
+<div className="max-w-7xl mx-auto p-6">
 
-          <div>
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest">
-              Add User
-            </p>
+<div className="flex items-center justify-between mb-8">
 
-            <h2 className="text-2xl font-bold text-slate-800">
-              Create user
-            </h2>
-          </div>
+<div className="flex items-center gap-4">
 
-          <button
-            onClick={close}
-            className="text-slate-400 hover:text-black cursor-pointer"
-          >
-            <X size={22} />
-          </button>
+<div
+className="
+w-14
+h-14
+rounded-2xl
+bg-blue-600
+flex
+items-center
+justify-center
+shadow-lg
+shadow-blue-200
+"
+>
 
-        </div>
+<UserPlus
+size={24}
+className="text-white"
+/>
 
-        <form
-        autoComplete="off"
-          onSubmit={handleSubmit(submit)}
-          className="p-5"
-        >
+</div>
 
-          <div className="grid grid-cols-2 gap-3">
+<div>
 
-            <div className="flex flex-col gap-1">
+<h1
+className="
+text-3xl
+font-bold
+text-slate-900
+"
+>
 
-              <input
-                placeholder="Full Name"
-                {...register("name", {
-                  required:
-                    "Name is required",
-                })}
-                className={input}
-              />
+Add User
 
-              {errors.name && (
-                <p className="text-red-500 text-xs">
-                  {errors.name.message}
-                </p>
-              )}
+</h1>
 
-            </div>
+<p
+className="
+text-slate-500
+mt-1
+"
+>
 
-            <div className="flex flex-col gap-1">
+Create and manage new users
 
-              <input
-                placeholder="Username"
-                {...register(
-                  "username",
-                  {
-                    required:
-                      "Username is required",
-                  }
-                )}
-                className={input}
-              />
+</p>
 
-              {errors.username && (
-                <p className="text-red-500 text-xs">
-                  {errors.username.message}
-                </p>
-              )}
+</div>
 
-            </div>
+</div>
 
-            <div className="flex flex-col gap-1">
+<button
 
-              <input
-                type="email"
-                placeholder="Email"
-                {...register("email", {
-                  required:
-                    "Email is required",
-                })}
-                className={input}
-              />
+type="button"
 
-              {errors.email && (
-                <p className="text-red-500 text-xs">
-                  {errors.email.message}
-                </p>
-              )}
-
-            </div>
-
-            <div className="flex flex-col gap-1">
-
-              <input
-                placeholder="Phone"
-                {...register("phone", {
-                  required:
-                    "Phone is required",
-                })}
-                className={input}
-              />
-
-              {errors.phone && (
-                <p className="text-red-500 text-xs">
-                  {errors.phone.message}
-                </p>
-              )}
-
-            </div>
-
-            <div className="flex flex-col gap-1">
-
-              <input
-                placeholder="Website"
-                {...register("website", {
-                  required:
-                    "Website is required",
-                })}
-                className={input}
-              />
-
-              {errors.website && (
-                <p className="text-red-500 text-xs">
-                  {errors.website.message}
-                </p>
-              )}
-
-            </div>
-
-          </div>
-
-          <div className="flex justify-end gap-2 mt-5">
-
-            <button
-              type="button"
-              onClick={close}
-              className="px-4 py-2 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50"
-            >
-              Cancel
-            </button>
-
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-lg bg-blue-600 text-white cursor-pointer hover:bg-blue-700"
-            >
-              Save
-            </button>
-
-          </div>
-
-        </form>
-
-      </div>
-
-    </div>
-  );
+onClick={()=>
+navigate(
+"/users"
+)
 }
 
-export default AddUserModal;
+className="
+flex
+items-center
+gap-2
+px-5
+py-3
+rounded-xl
+border
+border-slate-200
+hover:bg-white
+cursor-pointer
+"
+
+>
+
+<ArrowLeft size={18}/>
+
+Back
+
+</button>
+
+</div>
+
+<div
+className="
+bg-white
+rounded-3xl
+border
+border-slate-200
+shadow-sm
+p-8
+"
+>
+
+<form
+
+autoComplete="off"
+
+onSubmit={
+handleSubmit(
+submit
+)
+}
+
+>
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div>
+
+<label className="text-sm text-slate-600 mb-2 block">
+
+Full Name
+
+</label>
+
+<input
+
+placeholder="Enter full name"
+
+className={input}
+
+{...register(
+"name",
+{
+required:
+"Name is required",
+}
+)}
+
+/>
+
+<p className="text-red-500 text-xs mt-1">
+
+{errors.name?.message}
+
+</p>
+
+</div>
+
+<div>
+
+<label className="text-sm text-slate-600 mb-2 block">
+
+Username
+
+</label>
+
+<input
+
+placeholder="Enter username"
+
+className={input}
+
+{...register(
+"username",
+{
+required:
+"Username is required",
+}
+)}
+
+/>
+
+<p className="text-red-500 text-xs mt-1">
+
+{errors.username?.message}
+
+</p>
+
+</div>
+
+<div>
+
+<label className="text-sm text-slate-600 mb-2 block">
+
+Email
+
+</label>
+
+<input
+
+type="email"
+
+placeholder="Enter email"
+
+className={input}
+
+{...register(
+"email",
+{
+required:
+"Email is required",
+}
+)}
+
+/>
+
+<p className="text-red-500 text-xs mt-1">
+
+{errors.email?.message}
+
+</p>
+
+</div>
+
+<div>
+
+<label className="text-sm text-slate-600 mb-2 block">
+
+Phone
+
+</label>
+
+<input
+
+placeholder="Enter phone"
+
+className={input}
+
+{...register(
+"phone",
+{
+required:
+"Phone is required",
+}
+)}
+
+/>
+
+<p className="text-red-500 text-xs mt-1">
+
+{errors.phone?.message}
+
+</p>
+
+</div>
+
+<div className="md:col-span-2">
+
+<label className="text-sm text-slate-600 mb-2 block">
+
+Website
+
+</label>
+
+<input
+
+placeholder="Enter website"
+
+className={input}
+
+{...register(
+"website",
+{
+required:
+"Website is required",
+}
+)}
+
+/>
+
+<p className="text-red-500 text-xs mt-1">
+
+{errors.website?.message}
+
+</p>
+
+</div>
+
+</div>
+
+<div className="flex justify-end gap-3 mt-10">
+
+<button
+
+type="button"
+
+onClick={()=>
+navigate(
+"/users"
+)
+}
+
+className="
+px-6
+py-3
+rounded-xl
+border
+border-slate-200
+hover:bg-slate-50
+cursor-pointer
+"
+
+>
+
+Cancel
+
+</button>
+
+<button
+
+type="submit"
+
+className="
+flex
+items-center
+gap-2
+px-6
+py-3
+rounded-xl
+bg-blue-600
+hover:bg-blue-700
+text-white
+cursor-pointer
+shadow-md
+shadow-blue-200
+"
+
+>
+
+<Save size={18}/>
+
+Save User
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+);
+
+}
+
+export default AddUser;
