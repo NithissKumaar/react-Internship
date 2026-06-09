@@ -1,8 +1,8 @@
-import LoginForm from "../components/hookForm/LoginForm";
+import LoginForm from "../../components/hookForm/LoginForm";
 
 import { Link } from "react-router-dom";
-import LogoTitle from "../components/CName/CName";
-import CName from "../components/CName/CName";
+import LogoTitle from "../../components/CName/CName";
+import CName from "../../components/CName/CName";
 
 
 
