@@ -1,21 +1,14 @@
-import { useState } from "react";
-import { SlidersHorizontal } from "lucide-react";
 import SearchBar from "./SearchBar";
 
-function ToolBar({search,setSearch}){
-    const [filterOpen, setFilterOpen] = useState(false);
-    return(
-        <>
-        
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-4 border-b border-slate-100">
-
-  <SearchBar search={search} setSearch={setSearch} />
-
-  
-
-</div>
-</>
-    );
+function ToolBar({ search, setSearch }) {
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 px-6 py-6 border-b border-slate-100">
+      <div>
+        <h2 className="text-2xl font-bold text-slate-800">Employee Details</h2>
+      </div>
+      <SearchBar title="" search={search} setSearch={setSearch} />
+    </div>
+  );
 }
 
-export default ToolBar
+export default ToolBar;
