@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "../Layouts/Layouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import Login from "../pages/menubar/Login";
 import RoleLogin from "../pages/menubar/RoleLogin";
 import Dashboard from "../pages/menubar/Dashboard";
