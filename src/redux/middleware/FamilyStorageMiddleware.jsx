@@ -1,6 +1,7 @@
 const familyStorageMiddleware = (store) => (next) => (action) => {
   const result = next(action);
-  localStorage.setItem("familyContacts", JSON.stringify(store.getState().family.contacts));
+  const contacts = store.getState().family?.contacts || [];
+  localStorage.setItem("familyContacts", JSON.stringify(contacts));
   return result;
 };
 
