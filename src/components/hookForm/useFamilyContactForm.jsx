@@ -2,6 +2,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { setContacts } from "../../redux/reducer/FamilyReducer";
 import { useEffect } from "react";
+import { showSuccess } from "../../utils/toast";
 
 export default function useFamilyContactForm() {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ export default function useFamilyContactForm() {
 
     reset({ contacts: rows });
     save(rows);
+    showSuccess("Contact Added");
   };
 
   const deleteRow = (index) => {

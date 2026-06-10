@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProject } from "../../../redux/reducer/ProjectReducer";
+import { showSuccess } from "../../../utils/toast";
+
 export default function AddProject() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +29,9 @@ export default function AddProject() {
       return setErrors(err);
     dispatch(addProject(form));
     navigate("/projects");
+    showSuccess(
+      "Project Added"
+    );
   };
   return (
     <div className="p-3 bg-slate-50 min-h-screen">

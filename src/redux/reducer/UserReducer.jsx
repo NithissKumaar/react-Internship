@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../thunks/UserThunk";
+import { showSuccess } from "../../utils/toast";
 
 const UserReducer = createSlice({
   name: "user",
@@ -16,6 +17,7 @@ const UserReducer = createSlice({
     },
     deleteUser: (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload);
+      showSuccess("User deleted successfully");
     },
   },
   extraReducers: (builder) => {

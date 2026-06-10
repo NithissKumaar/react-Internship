@@ -1,6 +1,7 @@
 import ActionButtons from "./ActionButtons";
 import { relations } from "../../../constants/relationOptions";
 
+
 function ContactRow({ index, register, errors, editable, addRow, deleteRow }) {
   const input = "w-full min-w-[120px] p-2 text-sm rounded-lg border border-slate-200 bg-white text-slate-700 outline-none transition-all duration-200 focus:border-blue-300 focus:ring-1 focus:ring-blue-200 disabled:bg-slate-50 disabled:border-slate-100";
   const error = (field) => errors?.contacts?.[index]?.[field]?.message || "";
@@ -52,7 +53,7 @@ function ContactRow({ index, register, errors, editable, addRow, deleteRow }) {
       </td>
 
       <td className="p-3">
-        <ActionButtons editable={editable} onAdd={() => addRow(index)} onDelete={() => deleteRow(index)} />
+        <ActionButtons editable={editable} onAdd={() => {addRow(index)}} onDelete={() => deleteRow(index)} />
       </td>
     </tr>
   );
