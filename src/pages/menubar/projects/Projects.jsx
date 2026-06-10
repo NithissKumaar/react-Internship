@@ -5,6 +5,7 @@ import { Plus, FolderKanban, Calendar, Eye, Pencil, Trash2 } from "lucide-react"
 import { deleteProject, setSelected, editProject } from "../../../redux/reducer/ProjectReducer";
 import { fetchProjects } from "../../../redux/thunks/ProjectThunk";
 import SearchBar from "../../../components/ToolComponents/SearchBar";
+import { showSuccess } from "../../../utils/toast";
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -94,7 +95,13 @@ export default function Projects() {
                         <button className="text-green-600 hover:text-green-800 cursor-pointer" onClick={() => navigate(`/projects/edit/${p.id}`)}>
                           <Pencil size={18} />
                         </button>
-                        <button className="text-red-600 hover:text-red-800 cursor-pointer" onClick={() => dispatch(deleteProject(p.id))}>
+                        <button
+  className="text-red-600 hover:text-red-800 cursor-pointer"
+  onClick={() => {
+    dispatch(deleteProject(p.id));
+    showSuccess("Project Deleted");
+  }}
+>
                           <Trash2 size={18} />
                         </button>
                       </div>

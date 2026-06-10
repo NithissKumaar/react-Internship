@@ -10,5 +10,4 @@ function ToolBar({ search, setSearch }) {
     </div>
   );
 }
-
 export default ToolBar;
