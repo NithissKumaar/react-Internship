@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { editProject } from "../../../redux/reducer/ProjectReducer";
+import { showSuccess } from "../../../utils/toast";
 
 export default function EditProject() {
   const { id } = useParams();
@@ -33,6 +34,7 @@ export default function EditProject() {
     e.preventDefault();
     dispatch(editProject(form));
     navigate("/projects");
+    showSuccess("Project Updated Successfully");
   };
 
   const input = "w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition bg-white";
