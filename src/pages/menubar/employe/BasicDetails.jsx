@@ -11,7 +11,6 @@ function BasicDetails() {
 
   return (
     <div className="p-3 bg-slate-50 min-h-screen">
-      {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <div>
           <h1 className="text-lg font-semibold text-slate-800">Employees</h1>
@@ -25,8 +24,6 @@ function BasicDetails() {
           Register Employee
         </button>
       </div>
-
-      {/* Count */}
       <div className="grid grid-cols-2 gap-3 mb-3">
         <div className="bg-white rounded-md p-3 shadow-sm flex justify-between items-center">
           <div>
@@ -37,7 +34,6 @@ function BasicDetails() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="bg-white rounded-md shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

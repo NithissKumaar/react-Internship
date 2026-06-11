@@ -5,7 +5,7 @@ const roleMenus = {
   Admin: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/users", label: "Users", icon: Users },
-    { to: "/employe", label: "Employe", icon: Contact },
+    { to: "/employee", label: "Employee", icon: Contact },
     { to: "/projects", label: "Projects", icon: Folder },
     { to: "/reports", label: "Reports", icon: FileBarChart },
     
