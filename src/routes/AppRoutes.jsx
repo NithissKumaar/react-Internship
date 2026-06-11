@@ -13,6 +13,7 @@ import Projects from "../pages/menubar/projects/Projects";
 import AddProject from "../pages/menubar/projects/AddProject";
 import EditProject from "../pages/menubar/projects/EditProject";
 import AddUser from "../pages/menubar/users/AddUser";
+import Reports from "../pages/menubar/Reports";
 
 function AppRoutes() {
   return (
@@ -31,6 +32,7 @@ function AppRoutes() {
           <Route path="/projects" element={<ProtectedRoute roles={["Admin", "Manager"]}><Projects /></ProtectedRoute>} />
           <Route path="/projects/add" element={<ProtectedRoute roles={["Admin", "Manager"]}><AddProject /></ProtectedRoute>} />
           <Route path="/projects/edit/:id" element={<ProtectedRoute roles={["Admin", "Manager"]}><EditProject /></ProtectedRoute>} />
+          <Route path="/reports" element={<ProtectedRoute roles={["Admin"]}><Reports /></ProtectedRoute>} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,16 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Users, LogOut, X, Contact } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, X, Contact,Folder, FileBarChart } from "lucide-react";
 
 const roleMenus = {
   Admin: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/users", label: "Users", icon: Users },
     { to: "/employe", label: "Employe", icon: Contact },
-    { to: "/projects", label: "Projects", icon: Contact }
+    { to: "/projects", label: "Projects", icon: Folder },
+    { to: "/reports", label: "Reports", icon: FileBarChart },
+    
+
   ],
   Manager: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { to: "/projects", label: "Projects", icon: Contact }
+    { to: "/projects", label: "Projects", icon: Folder }
   ],
   Employee: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
