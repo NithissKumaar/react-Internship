@@ -8,12 +8,13 @@ import RoleLogin from "../pages/menubar/RoleLogin";
 import Dashboard from "../pages/menubar/Dashboard";
 import Users from "../pages/menubar/users/Users";
 import Profile from "../pages/profile/Profile";
-import Employe from "../pages/menubar/employe/Employe";
+import EmployeeRegistration from "../pages/menubar/employe/EmployeeRegistration";
 import Projects from "../pages/menubar/projects/Projects";
 import AddProject from "../pages/menubar/projects/AddProject";
 import EditProject from "../pages/menubar/projects/EditProject";
 import AddUser from "../pages/menubar/users/AddUser";
 import Reports from "../pages/menubar/Reports";
+import BasicDetails from "../pages/menubar/employe/BasicDetails";
 
 function AppRoutes() {
   return (
@@ -28,11 +29,12 @@ function AppRoutes() {
           <Route path="/users" element={<ProtectedRoute roles={["Admin"]}><Users /></ProtectedRoute>} />
           <Route path="/users/add" element={<ProtectedRoute roles={["Admin"]}><AddUser /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute roles={["Employee"]}><Profile /></ProtectedRoute>} />
-          <Route path="/employe" element={<ProtectedRoute roles={["Admin"]}><Employe /></ProtectedRoute>} />
+          <Route path="/employee-registration" element={<ProtectedRoute roles={["Admin"]}><EmployeeRegistration /></ProtectedRoute>} />
           <Route path="/projects" element={<ProtectedRoute roles={["Admin", "Manager"]}><Projects /></ProtectedRoute>} />
           <Route path="/projects/add" element={<ProtectedRoute roles={["Admin", "Manager"]}><AddProject /></ProtectedRoute>} />
           <Route path="/projects/edit/:id" element={<ProtectedRoute roles={["Admin", "Manager"]}><EditProject /></ProtectedRoute>} />
           <Route path="/reports" element={<ProtectedRoute roles={["Admin"]}><Reports /></ProtectedRoute>} />
+          <Route path="/employee"element={<BasicDetails />}/>
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
