@@ -7,7 +7,9 @@ import formReducer from "../redux/reducer/formSlice";
 import localStorageMiddleware from "../redux/middleware/localStorageMiddleware";
 import employeeStorageMiddleware from "../redux/middleware/employeeStorageMiddleware";
 import userStorageMiddleware from "../redux/middleware/userStorageMiddleware";
-import responseStorageMiddleware from "../redux/middleware/responseStorageMiddleware";
+import responseStorageMiddleware from "../redux/middleware/ResponseStorageMiddleware";
+import invoiceSlice from "../redux/reducer/invoiceSlice";
+import {invoiceMiddleware} from "../redux/middleware/InvoiceMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -16,11 +18,13 @@ export const store = configureStore({
     user: userReducer,
     forms: formReducer,
     responses: responseReducer,
+    invoices: invoiceSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(
     localStorageMiddleware,
     employeeStorageMiddleware,
     userStorageMiddleware,
-    responseStorageMiddleware
+    responseStorageMiddleware,
+    invoiceMiddleware,
   ),
 });

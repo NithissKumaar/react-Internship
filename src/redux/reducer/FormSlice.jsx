@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchForms, saveFormThunk } from "../thunks/FormThunk";
+import { fetchForms, saveFormThunk } from "../thunks/formThunk";
 
 const formSlice = createSlice({
   name: "forms",
