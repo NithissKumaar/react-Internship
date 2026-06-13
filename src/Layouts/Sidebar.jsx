@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Users, LogOut, X, Contact, Folder, FileBarChart } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, X, Contact, Folder, FileBarChart, Receipt, ClipboardList, MessageSquareReply } from "lucide-react";
 
 const roleMenus = {
   Admin: [
@@ -8,37 +8,43 @@ const roleMenus = {
     { to: "/employee", label: "Employee", icon: Contact },
     { to: "/projects", label: "Projects", icon: Folder },
     { to: "/reports", label: "Reports", icon: FileBarChart },
-    { to: "/forms", label: "Forms", icon: FileBarChart },
-    { to: "/responses", label: "Responses", icon: FileBarChart }
+    { to: "/forms", label: "Forms", icon: ClipboardList },
+    { to: "/responses", label: "Responses", icon: MessageSquareReply },
+    { to: "/invoices", label: "Invoices", icon: Receipt },
   ],
   Manager: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { to: "/projects", label: "Projects", icon: Folder }
+    { to: "/projects", label: "Projects", icon: Folder },
+    { to: "/invoices", label: "Invoices", icon: Receipt },
   ],
   Employee: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/profile", label: "Profile", icon: Contact },
-    { to: "/forms", label: "Forms", icon: FileBarChart }
-  ]
+    { to: "/forms", label: "Forms", icon: ClipboardList },
+    { to: "/invoices", label: "Invoices", icon: Receipt },
+  ],
 };
 
 function Sidebar({ isOpen, onClose }) {
   const { pathname } = useLocation();
   const role = localStorage.getItem("role");
   const navLinks = roleMenus[role] || [];
+
   return (
     <>
       {isOpen && <div className="fixed inset-0 bg-black/40 z-40" onClick={onClose} />}
-      <aside className={`fixed top-16 left-0 h-[calc(100vh-64px)] w-64 bg-white shadow-xl z-40 transition-transform duration-300 flex flex-col ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <aside className={`fixed top-16 left-0 h-[calc(100vh-64px)] w-64 bg-white shadow-xl z-40 transition-transform duration-300 flex flex-col overflow-hidden ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex items-center justify-between p-4 border-b border-slate-200">
           <h2 className="font-semibold text-lg">Menu</h2>
-          <button onClick={onClose} className="cursor-pointer"><X size={20} /></button>
+          <button onClick={onClose} className="cursor-pointer">
+            <X size={20} />
+          </button>
         </div>
-        <nav className="p-3 flex-1">
+        <nav className="flex-1 overflow-y-auto p-3 scrollbar-hide" style={{ scrollBehavior: "auto" }}>
           {navLinks.map(({ to, label, icon: Icon }) => (
             <Link key={to} to={to} onClick={onClose} className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-2 ${pathname === to ? "bg-blue-50 text-blue-600" : "hover:bg-slate-100"}`}>
-              <Icon size={18} />
-              {label}
+              {Icon && <Icon size={18} />}
+              <span>{label}</span>
             </Link>
           ))}
         </nav>
