@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { showSuccess } from "../../../utils/toast";
+import toast from "react-hot-toast";
 import { addEmployee } from "../../../redux/reducer/EmployeeReducer";
 import { User, MapPin, Briefcase, CheckCircle, ArrowLeft } from "lucide-react";
 
@@ -38,10 +38,11 @@ export default function EmployeeRegistration() {
 
   const submit = () => {
     dispatch(addEmployee(getValues()));
-    showSuccess("Employee Registered Successfully");
+    toast.success("Employee Registered Successfully");
     reset();
     setStep(1);
     navigate("/employee");
+    
   };
 
   const values = getValues();

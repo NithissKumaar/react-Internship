@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../thunks/UserThunk";
-import { showSuccess } from "../../utils/toast";
+import toast from "react-hot-toast";
 
 const saveUsers = (users) => {
   localStorage.setItem("users", JSON.stringify(users));
@@ -23,7 +23,7 @@ const UserReducer = createSlice({
     deleteUser: (state, action) => {
       state.users = state.users.filter((user) => user.id !== action.payload);
       saveUsers(state.users);
-      showSuccess("User deleted successfully");
+      toast.success("User deleted successfully");
     },
   },
   extraReducers: (builder) => {

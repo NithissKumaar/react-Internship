@@ -30,24 +30,30 @@ function AppRoutes() {
       <ToastContainer position="top-right" autoClose={2500} />
       <Toaster
         position="top-center"
-        gutter={10}
-        containerStyle={{ top: 24 }}
         toastOptions={{
-          duration: 2500,
+          duration: 3000,
           style: {
-            background: "rgba(42, 255, 85, 0.12)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            color: "#0f172a",
-            border: "1px solid rgba(255,255,255,.25)",
-            borderRadius: "999px",
-            padding: "16px 22px",
-            minWidth: "260px",
-            boxShadow: "0 20px 40px rgba(0,0,0,.10)",
-            fontWeight: 500,
+            borderRadius: '1rem',
+            background: '#f8fafc',
+            color: '#0f172a',
+            boxShadow: '0 20px 45px rgba(15, 23, 42, 0.12)',
           },
-          success: { iconTheme: { primary: "#22c55e", secondary: "#ffffff" } },
-          error: { iconTheme: { primary: "#ef4444", secondary: "#ffffff" } },
+          success: {
+            duration: 3000,
+            style: {
+              background: '#ecfdf5',
+              color: '#064e3b',
+              border: '1px solid #34d399',
+            },
+          },
+          error: {
+            duration: 4000,
+            style: {
+              background: '#fef2f2',
+              color: '#991b1b',
+              border: '1px solid #f87171',
+            },
+          },
         }}
       />
       <Routes>
@@ -57,7 +63,7 @@ function AppRoutes() {
           <Route path="/dashboard" element={<ProtectedRoute roles={["Admin", "Manager", "Employee"]}><Dashboard /></ProtectedRoute>} />
           <Route path="/users" element={<ProtectedRoute roles={["Admin"]}><Users /></ProtectedRoute>} />
           <Route path="/users/add" element={<ProtectedRoute roles={["Admin"]}><AddUser /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute roles={["Employee"]}><Profile /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute roles={["Employee", "Admin"]}><Profile /></ProtectedRoute>} />
           <Route path="/employee-registration" element={<ProtectedRoute roles={["Admin"]}><EmployeeRegistration /></ProtectedRoute>} />
           <Route path="/employee" element={<BasicDetails />} />
           <Route path="/projects" element={<ProtectedRoute roles={["Admin", "Manager"]}><Projects /></ProtectedRoute>} />

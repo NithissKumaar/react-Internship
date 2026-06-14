@@ -5,7 +5,7 @@ import { Plus, FolderKanban, Calendar, Eye, Pencil, Trash2 } from "lucide-react"
 import { deleteProject, setSelected, editProject } from "../../../redux/reducer/ProjectReducer";
 import { fetchProjects } from "../../../redux/thunks/ProjectThunk";
 import SearchBar from "../../../components/ToolComponents/SearchBar";
-import { showSuccess } from "../../../utils/toast";
+import toast from "react-hot-toast";
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ export default function Projects() {
   className="text-red-600 hover:text-red-800 cursor-pointer"
   onClick={() => {
     dispatch(deleteProject(p.id));
-    showSuccess("Project Deleted");
+    toast.success("Project deleted successfully!");
   }}
 >
                           <Trash2 size={18} />

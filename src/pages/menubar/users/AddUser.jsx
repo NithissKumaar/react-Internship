@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { UserPlus, ArrowLeft, Save } from "lucide-react";
-import { showSuccess } from "../../../utils/toast";
+import toast from "react-hot-toast";
 import { addUser } from "../../../redux/reducer/UserReducer";
 
 function AddUser() {
@@ -15,7 +15,7 @@ function AddUser() {
 
   const submit = (data) => {
     dispatch(addUser({ ...data, createdAt: new Date().toLocaleDateString() }));
-    showSuccess("New User added successfully");
+    toast.success("User added successfully!");
     reset();
     navigate("/users");
   };

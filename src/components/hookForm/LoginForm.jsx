@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { showSuccess } from "../../utils/toast";
+import toast from "react-hot-toast";
 import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 
 function LoginForm({ role = "admin" }) {
@@ -27,7 +27,7 @@ function LoginForm({ role = "admin" }) {
 
     if (data.email === current.email && data.password === current.password) {
       localStorage.setItem("role", role.charAt(0).toUpperCase() + role.slice(1));
-      showSuccess("Login successfully");
+     toast.success("Login successful!");
       navigate("/dashboard", { state: { sidebarOpen: true } });
       return;
     }

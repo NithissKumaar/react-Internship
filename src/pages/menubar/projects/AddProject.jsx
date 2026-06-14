@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProject } from "../../../redux/reducer/ProjectReducer";
-import { showSuccess } from "../../../utils/toast";
+import toast from "react-hot-toast";
 
 export default function AddProject() {
   const dispatch = useDispatch();
@@ -29,10 +29,7 @@ export default function AddProject() {
       return setErrors(err);
     dispatch(addProject(form));
     navigate("/projects");
-    showSuccess(
-      "Project Added"
-    );
-  };
+    toast.success("Project added successfully!");};
   return (
     <div className="p-3 bg-slate-50 min-h-screen">
       <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-md p-5">
