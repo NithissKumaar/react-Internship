@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { saveFormThunk } from "../../redux/thunks/formThunk";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { Type, Hash, ChevronDown, CheckSquare, CircleDot, AlignLeft, Calendar, Mail, Phone, Star, Trash2, Save, Copy, GripVertical, Plus, X, ArrowLeft } from "lucide-react";
-
+import toast from "react-hot-toast";
 const toolbox = [
   { id: "text", name: "Text Input", icon: Type },
   { id: "textarea", name: "Text Area", icon: AlignLeft },
@@ -65,6 +65,7 @@ export default function FormBuilder() {
   const handleSave = () => {
     if (fields.length === 0) { setSavedMessage("Add at least one field before saving"); setTimeout(() => setSavedMessage(""), 2000); return; }
     dispatch(saveFormThunk({ title, fields })).then(() => { setSavedMessage("Form saved!"); setTimeout(() => { setSavedMessage(""); navigate("/forms"); }, 800); });
+    toast.success("Form saved successfully!");
   };
 
   const renderInput = (field, { interactive = false } = {}) => {
@@ -123,8 +124,8 @@ export default function FormBuilder() {
           <p className="text-sm text-gray-500">Drag elements to design your form</p>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate("/forms")} className="mt-2 inline-flex items-center gap-2 text-blue-600 font-medium text-sm cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
-          {savedMessage && <span className="text-sm text-blue-600 font-medium">{savedMessage}</span>}
+          <button onClick={() => {navigate("/forms"); toast.success("Form saved successfully!");}} className="mt-2 inline-flex items-center gap-2 text-blue-600 font-medium text-sm cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
+         
           <button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition cursor-pointer"><Save size={16} />Save Form</button>
         </div>
       </header>

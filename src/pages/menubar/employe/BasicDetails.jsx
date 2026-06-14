@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteEmployee } from "../../../redux/reducer/EmployeeReducer";
-import { showSuccess } from "../../../utils/toast";
+import toast from "react-hot-toast";
 import { Plus, Users, Trash2 } from "lucide-react";
 
 function BasicDetails() {
@@ -67,7 +67,7 @@ function BasicDetails() {
                         <button
                           onClick={() => {
                             dispatch(deleteEmployee(i));
-                            showSuccess("Employee Deleted");
+                            toast.success("Employee deleted successfully!");
                           }}
                           className="text-red-500 hover:text-red-700 cursor-pointer transition"
                         >

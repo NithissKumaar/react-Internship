@@ -6,6 +6,7 @@ import InvoiceItems from "../../components/hookForm/invoice/InvoiceItems";
 import InvoiceSummary from "../../components/hookForm/invoice/InvoiceSummary";
 import useInvoice from "../../components/hookForm/invoice/useInvoice";
 import { calculateInvoice } from "../../utils/invoiceCalculation";
+import toast from "react-hot-toast";
 
 const defaultValues = {
   customerName: "",
@@ -39,6 +40,7 @@ export default function InvoicePage() {
     save(invoice);
     reset(defaultValues);
     navigate("/invoices");
+    toast.success("Invoice saved successfully!");
   };
 
   return (

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchForms } from "../../redux/thunks/formThunk";
 import { Star, ArrowLeft, FileText } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function FillForm() {
   const { id } = useParams();
@@ -36,6 +37,7 @@ export default function FillForm() {
     const old = JSON.parse(localStorage.getItem("responses") || "[]");
     localStorage.setItem("responses", JSON.stringify([response, ...old]));
     navigate("/forms");
+    toast.success("Form submitted successfully!");
   };
 
   const inputStyle = (error) => `w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 transition ${error ? "border-red-400 focus:ring-red-200" : "border-slate-200 focus:ring-blue-100 focus:border-blue-500"}`;
@@ -78,7 +80,7 @@ export default function FillForm() {
           </div>
         );
       default:
-        return <input type={field.type === "phone" ? "tel" : field.type} value={value || ""} placeholder={field.placeholder} className={inputStyle(hasError)} onChange={(e) => setValue(field.id, e.target.value)} />;
+        return <input  type={field.type === "phone" ? "tel" : field.type} value={value || ""} placeholder={field.placeholder} className={inputStyle(hasError)} onChange={(e) => setValue(field.id, e.target.value)} />;
     }
   };
 
@@ -88,7 +90,7 @@ export default function FillForm() {
   return (
     <div className="min-h-screen bg-slate-50 p-6 md:p-10">
       <div className="max-w-xl mx-auto">
-        <button onClick={() => navigate("/forms")} className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 font-medium mb-4"><ArrowLeft size={16} />Back to Forms</button>
+        <button onClick={() => navigate("/forms")} className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 font-medium mb-4 cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
         <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-8">
           <h1 className="text-xl font-semibold">{form.title}</h1>
           <p className="text-sm text-slate-500 mt-1">Please fill out the form below</p>
@@ -101,7 +103,7 @@ export default function FillForm() {
               </div>
             ))}
           </div>
-          <button onClick={handleSubmit} className="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg text-sm font-medium transition">Submit</button>
+          <button onClick={handleSubmit} className="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg text-sm font-medium transition cursor-pointer">Submit</button>
         </div>
       </div>
     </div>

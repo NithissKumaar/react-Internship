@@ -52,8 +52,8 @@ export default function InvoiceItems() {
                       placeholder="Item name or service"
                       className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 transition"
                       {...register(`items.${index}.itemName`, {
-                        required: true,
-                      })}
+            required: "Item name is required",
+          })}
                     />
                   </td>
                   <td className="p-3">
