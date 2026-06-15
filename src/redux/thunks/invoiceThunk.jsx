@@ -1,4 +1,4 @@
-import { saveInvoiceStart, saveInvoiceSuccess, saveInvoiceFailure, fetchInvoicesStart, fetchInvoicesSuccess } from "../reducer/invoiceSlice";
+import { saveInvoiceStart, saveInvoiceSuccess, saveInvoiceFailure, fetchInvoicesStart, fetchInvoicesSuccess } from "../reducer/invoiceReducer";
 const STORAGE_KEY = "invoices";
 export const fetchInvoices = () => (dispatch) => {
   dispatch(fetchInvoicesStart());
