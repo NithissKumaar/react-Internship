@@ -13,34 +13,63 @@ export default function FillForm() {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 
-  useEffect(() => { if (forms.length === 0) dispatch(fetchForms()); }, [dispatch]);
+  useEffect(() => {
+    if (forms.length === 0) {
+      dispatch(fetchForms());
+    }
+  }, [dispatch, forms.length]);
 
   const form = forms.find((f) => String(f.id) === String(id));
 
   const setValue = (fieldId, value) => {
     setValues((prev) => ({ ...prev, [fieldId]: value }));
-    if (errors[fieldId]) setErrors((prev) => ({ ...prev, [fieldId]: "" }));
+    setErrors((prev) => ({ ...prev, [fieldId]: undefined }));
+  };
+
+  const validate = () => {
+    const validation = {};
+    form.fields.forEach((field) => {
+      const value = values[field.id];
+      if (field.required) {
+        const invalid = value == null || String(value).trim() === "" || (field.type === "checkbox" && !value);
+        if (invalid) {
+          validation[field.id] = `${field.label} is required`;
+          return;
+        }
+      }
+      if (field.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        validation[field.id] = "Enter valid email";
+      }
+    });
+    setErrors(validation);
+    return Object.keys(validation).length === 0;
   };
 
   const handleSubmit = () => {
     if (!form) return;
-    const validation = {};
-    form.fields.forEach((field) => {
-      if (field.required) {
-        const value = values[field.id];
-        const invalid = value === undefined || value === "" || (field.type === "checkbox" && !value);
-        if (invalid) validation[field.id] = `${field.label || "This field"} is required`;
-      }
-    });
-    if (Object.keys(validation).length) { setErrors(validation); return; }
-    const response = { id: Date.now(), formId: form.id, formTitle: form.title, submittedBy: localStorage.getItem("username") || "Employee", submittedRole: localStorage.getItem("role"), answers: values, submittedAt: new Date().toISOString() };
-    const old = JSON.parse(localStorage.getItem("responses") || "[]");
+    const valid = validate();
+    if (!valid) {      
+      return;
+    }
+    let old = [];
+    try {
+      old = JSON.parse(localStorage.getItem("responses")) || [];
+    } catch {}
+    const response = {
+      id: Date.now(),
+      formId: form.id,
+      formTitle: form.title,
+      submittedBy: localStorage.getItem("username") || "Employee",
+      submittedRole: localStorage.getItem("role"),
+      answers: values,
+      submittedAt: new Date().toISOString(),
+    };
     localStorage.setItem("responses", JSON.stringify([response, ...old]));
-    navigate("/forms");
     toast.success("Form submitted successfully!");
+    navigate("/forms");
   };
 
-  const inputStyle = (error) => `w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 transition ${error ? "border-red-400 focus:ring-red-200" : "border-slate-200 focus:ring-blue-100 focus:border-blue-500"}`;
+  const inputStyle = (error) => `w-full rounded-lg border px-3 py-2 text-sm transition ${error ? "border-red-500" : "border-slate-300"}`;
 
   const renderInput = (field) => {
     const value = values[field.id];
@@ -49,61 +78,69 @@ export default function FillForm() {
       case "dropdown":
         return (
           <select value={value || ""} className={inputStyle(hasError)} onChange={(e) => setValue(field.id, e.target.value)}>
-            <option value="">Select an option</option>
-            {field.options?.map((op) => <option key={op} value={op}>{op}</option>)}
+            <option value="">Select</option>
+            {field.options?.map((op) => <option key={op}>{op}</option>)}
           </select>
         );
       case "radio":
         return (
           <div className="space-y-2">
             {field.options?.map((op) => (
-              <label key={op} className="flex items-center gap-2">
-                <input type="radio" checked={value === op} onChange={() => setValue(field.id, op)} />{op}
+              <label key={op} className="flex gap-2">
+                <input type="radio" name={field.id} checked={value === op} onChange={() => setValue(field.id, op)} />
+                {op}
               </label>
             ))}
           </div>
         );
       case "checkbox":
         return (
-          <label className="flex items-center gap-2">
-            <input type="checkbox" checked={!!value} onChange={(e) => setValue(field.id, e.target.checked)} />{field.placeholder || "I agree"}
+          <label className="flex gap-2">
+            <input type="checkbox" checked={!!value} onChange={(e) => setValue(field.id, e.target.checked)} />
+            {field.placeholder || "I agree"}
           </label>
         );
-      case "textarea":
-        return <textarea rows={3} value={value || ""} placeholder={field.placeholder} className={inputStyle(hasError) + " resize-none"} onChange={(e) => setValue(field.id, e.target.value)} />;
       case "rating":
         return (
           <div className="flex gap-1">
             {Array.from({ length: field.maxStars || 5 }).map((_, i) => (
-              <Star key={i} size={24} onClick={() => setValue(field.id, i + 1)} className={`cursor-pointer ${value && i < value ? "fill-blue-500 text-blue-500" : "text-slate-330"}`} />
+              <Star key={i} size={24} onClick={() => setValue(field.id, i + 1)} className={`cursor-pointer ${value && i < value ? "fill-blue-500 text-blue-500" : "text-slate-300"}`} />
             ))}
           </div>
         );
       default:
-        return <input  type={field.type === "phone" ? "tel" : field.type} value={value || ""} placeholder={field.placeholder} className={inputStyle(hasError)} onChange={(e) => setValue(field.id, e.target.value)} />;
+        return <input type={field.type === "phone" ? "tel" : field.type} value={value || ""} placeholder={field.placeholder} className={inputStyle(hasError)} onChange={(e) => setValue(field.id, e.target.value)} />;
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading form...</div>;
-  if (!form) return <div className="min-h-screen flex flex-col items-center justify-center gap-3"><FileText /><h2>Form not found</h2></div>;
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  if (!form) {
+    return <div className="min-h-screen flex flex-col justify-center items-center"><FileText />Form not found</div>;
+  }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 md:p-10">
+    <div className="min-h-screen p-6 bg-slate-50">
       <div className="max-w-xl mx-auto">
-        <button onClick={() => navigate("/forms")} className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 font-medium mb-4 cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
-        <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-8">
-          <h1 className="text-xl font-semibold">{form.title}</h1>
-          <p className="text-sm text-slate-500 mt-1">Please fill out the form below</p>
-          <div className="space-y-5 mt-7">
+        <button onClick={() => navigate("/forms")} className="flex items-center gap-1 text-sm text-gray-600 mb-4 cursor-pointer hover:text-gray-900">
+          <ArrowLeft  size={14}/>Back
+        </button>
+        <div className="bg-white rounded-xl p-8">
+          <h1>{form.title}</h1>
+          <div className="space-y-5 mt-6">
             {form.fields.map((field) => (
               <div key={field.id}>
-                {field.type !== "checkbox" && <label className="block text-sm font-medium text-slate-700 mb-1.5">{field.label}{field.required && <span className="text-red-500 ml-1">*</span>}</label>}
+                {field.type !== "checkbox" && <label>{field.label}</label>}
                 {renderInput(field)}
-                {errors[field.id] && <p className="text-red-500 text-xs mt-1">{errors[field.id]}</p>}
+                {errors[field.id] && <p className="text-red-500 text-sm">{errors[field.id]}</p>}
               </div>
             ))}
           </div>
-          <button onClick={handleSubmit} className="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg text-sm font-medium transition cursor-pointer">Submit</button>
+          <button onClick={handleSubmit} className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg cursor-pointer hover:bg-blue-700">
+            Submit
+          </button>
         </div>
       </div>
     </div>
