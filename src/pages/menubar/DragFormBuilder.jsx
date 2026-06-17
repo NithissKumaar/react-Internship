@@ -154,7 +154,7 @@ export default function FormBuilder() {
               )}
             </Droppable>
           </div>
-          {/* CENTER — Canvas */}
+        
           <div className="col-span-7 p-6 overflow-y-auto">
             <div className="bg-white rounded-xl border border-gray-200 min-h-full p-6">
               <h2 className="text-base font-semibold text-gray-900 mb-1">Form Canvas</h2>

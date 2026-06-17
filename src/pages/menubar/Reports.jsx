@@ -15,9 +15,9 @@ function Reports() {
     { title: "Completed", value: completed, icon: CheckCircle },
   ];
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-100">
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        {/* Header */}
+    <div className="min-h-screen  ">
+      <main className="max-w-7xl mx-auto ">
+      
         <section className="rounded-3xl bg-gradient-to-r from-blue-700 to-blue-500 p-10 text-white shadow-xl border border-blue-400">
           <div className="flex justify-between items-center">
             <div>

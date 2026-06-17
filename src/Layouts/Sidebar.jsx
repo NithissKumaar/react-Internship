@@ -34,12 +34,7 @@ function Sidebar({ isOpen, onClose }) {
     <>
       {isOpen && <div className="fixed inset-0 bg-black/40 z-40" onClick={onClose} />}
       <aside className={`fixed top-16 left-0 h-[calc(100vh-64px)] w-64 bg-white shadow-xl z-40 transition-transform duration-300 flex flex-col overflow-hidden ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="flex items-center justify-between p-4 border-b border-slate-200">
-          <h2 className="font-semibold text-lg">Menu</h2>
-          <button onClick={onClose} className="cursor-pointer">
-            <X size={20} />
-          </button>
-        </div>
+      
         <nav className="flex-1 overflow-y-auto p-3 scrollbar-hide" style={{ scrollBehavior: "auto" }}>
           {navLinks.map(({ to, label, icon: Icon }) => (
             <Link key={to} to={to} onClick={onClose} className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-2 ${pathname === to ? "bg-blue-50 text-blue-600" : "hover:bg-slate-100"}`}>

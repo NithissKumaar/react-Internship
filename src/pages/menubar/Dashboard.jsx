@@ -11,10 +11,10 @@ function Dashboard() {
     setUsers(storedUsers);
   }, []);
   return (
-    <div className="min-h-screen bg-slate-50">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Welcome Section */}
-        <section className="rounded-3xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-white shadow-lg">
+    <div className="min-h-screen ">
+      <main className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-1  space-y-5 ">
+        
+        <section className="rounded-3xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-white shadow-lg ">
           <div className="space-y-3">
             <span className="text-blue-100 text-sm font-medium">
               Dashboard

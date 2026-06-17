@@ -12,7 +12,7 @@ const ProjectReducer = createSlice({
     addProject: (state, action) => {
       state.projects.push({
         id: Date.now(),
-        status: action.payload.status || "Pending",
+        status: action.payload.status || "Not Started",
         ...action.payload,
       });
     },
