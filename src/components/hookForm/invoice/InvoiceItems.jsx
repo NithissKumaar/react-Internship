@@ -32,7 +32,7 @@ export default function InvoiceItems() {
       <div className="border border-slate-200 rounded-xl overflow-hidden">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wide">
+            <tr className="bg-blue-50 border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wide">
               <th className="p-3 font-medium w-1/2">Item Description</th>
               <th className="p-3 font-medium text-center w-20">Qty</th>
               <th className="p-3 font-medium text-center w-28">Rate (₹)</th>

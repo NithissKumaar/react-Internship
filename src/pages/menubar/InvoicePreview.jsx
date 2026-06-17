@@ -9,6 +9,41 @@ export default function InvoicePreview() {
   const { invoices } = useInvoice();
 
   const invoice = invoices.find((i) => String(i.id) === String(id));
+  const handlePrint = () => {
+    const printContents = document.getElementById("print-area")?.innerHTML;
+    const printWindow = window.open("", "", "width=800,height=600");
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Invoice #${invoice?.id}</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 30px; color: #333; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+            .flex { display: flex; justify-content: space-between; }
+            .text-right { text-align: right; }
+            .text-center { text-align: center; }
+            .font-semibold { font-weight: bold; }
+            .space-y-2 > * + * { margin-top: 8px; }
+            hr { border: 0; border-top: 1px solid #ddd; margin: 10px 0; }
+          </style>
+        </head>
+        <body>
+          <p style="text-align: center; color: #666; font-size: 12px; text-transform: uppercase;">Makers Mind</p>
+          ${printContents}
+        </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.focus();
+    
+    setTimeout(() => {
+      printWindow.print();
+      printWindow.close();
+    }, 100);
+  };
 
   if (!invoice) {
     return (
@@ -16,15 +51,12 @@ export default function InvoicePreview() {
         <div className="bg-slate-100 text-slate-400 rounded-full p-4">
           <FileText size={28} />
         </div>
-        <h2 className="text-base font-semibold text-slate-900">
-          Invoice not found
-        </h2>
+        <h2 className="text-base font-semibold text-slate-900">Invoice not found</h2>
         <button
           onClick={() => navigate("/invoices")}
           className="mt-2 inline-flex items-center gap-2 text-blue-600 font-medium text-sm hover:underline cursor-pointer"
         >
-          <ArrowLeft size={16} />
-          Back to Invoices
+          <ArrowLeft size={16} /> Back to Invoices
         </button>
       </div>
     );
@@ -33,49 +65,35 @@ export default function InvoicePreview() {
   return (
     <div className="min-h-screen bg-slate-50 p-6 md:p-10">
       <div className="max-w-3xl mx-auto">
-        <div className="flex items-center justify-between mb-4 print:hidden">
+        <div className="flex items-center justify-between mb-4">
           <button
             onClick={() => navigate("/invoices")}
             className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 font-medium transition cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            Back to Invoices
+            <ArrowLeft size={16} /> Back to Invoices
           </button>
 
           <button
-            onClick={() => window.print()}
+            onClick={handlePrint}
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition cursor-pointer"
           >
-            <Printer size={16} />
-            Print Invoice
+            <Printer size={16} /> Print Invoice
           </button>
         </div>
-
-        <div
-          id="print-area"
-          className="bg-white border border-slate-200 rounded-2xl shadow-sm p-8"
-        >
+        <div id="print-area" className="bg-white border border-slate-200 rounded-2xl shadow-sm p-8">
           <div className="flex items-start justify-between border-b border-slate-100 pb-6 mb-6">
             <div>
-              <h1 className="text-2xl font-semibold text-slate-900">
-                Invoice
-              </h1>
-              <p className="text-sm text-slate-500 mt-1">
-                #{invoice.id}
-              </p>
+              <h1 className="text-2xl font-semibold text-slate-900">Invoice</h1>
+              <p className="text-sm text-slate-500 mt-1">#{invoice.id}</p>
             </div>
             <div className="text-right text-sm">
               <p className="text-slate-500">Invoice Date</p>
-              <p className="font-medium text-slate-900">
-                {invoice.invoiceDate}
-              </p>
+              <p className="font-medium text-slate-900">{invoice.invoiceDate}</p>
             </div>
           </div>
 
           <div className="mb-8">
-            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">
-              Billed to
-            </p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Billed to</p>
             <p className="text-base font-semibold text-slate-900">
               {invoice.customerName || "Unnamed Customer"}
             </p>
@@ -95,17 +113,10 @@ export default function InvoicePreview() {
                 {invoice.items.map((item, i) => (
                   <tr key={i}>
                     <td className="p-3 text-slate-900">{item.itemName}</td>
-                    <td className="p-3 text-center text-slate-600">
-                      {item.quantity}
-                    </td>
-                    <td className="p-3 text-right text-slate-600">
-                      {formatCurrency(item.rate)}
-                    </td>
+                    <td className="p-3 text-center text-slate-600">{item.quantity}</td>
+                    <td className="p-3 text-right text-slate-600">{formatCurrency(item.rate)}</td>
                     <td className="p-3 text-right font-medium text-slate-900">
-                      {formatCurrency(
-                        (Number(item.quantity) || 0) *
-                          (Number(item.rate) || 0)
-                      )}
+                      {formatCurrency((Number(item.quantity) || 0) * (Number(item.rate) || 0))}
                     </td>
                   </tr>
                 ))}
@@ -117,15 +128,11 @@ export default function InvoicePreview() {
             <div className="w-full sm:w-72 space-y-2">
               <div className="flex justify-between text-sm text-slate-600">
                 <span>Subtotal</span>
-                <span className="font-medium text-slate-900">
-                  {formatCurrency(invoice.subtotal)}
-                </span>
+                <span className="font-medium text-slate-900">{formatCurrency(invoice.subtotal)}</span>
               </div>
               <div className="flex justify-between text-sm text-slate-600">
                 <span>GST (3%)</span>
-                <span className="font-medium text-slate-900">
-                  {formatCurrency(invoice.gst)}
-                </span>
+                <span className="font-medium text-slate-900">{formatCurrency(invoice.gst)}</span>
               </div>
               <hr className="border-slate-200" />
               <div className="flex justify-between text-lg font-semibold text-slate-900">

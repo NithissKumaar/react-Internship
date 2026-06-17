@@ -9,7 +9,7 @@ export default function InvoiceSummary() {
 
   return (
     <div className="mt-8 flex justify-end">
-      <div className="w-full sm:w-80 bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-3">
+      <div className="w-full sm:w-80  border border-slate-200 rounded-xl p-5 space-y-3">
         <div className="flex justify-between text-sm text-slate-600">
           <span>Subtotal</span>
           <span className="font-medium text-slate-900">
