@@ -20,10 +20,10 @@ function Layout() {
   }, [location, navigate]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <Navbar
         sidebarOpen={sidebarOpen}
-        onMenuClick={() => setSidebarOpen(true)}
+        onMenuClick={() => setSidebarOpen(prev => !prev)}
       />
 
       <Sidebar
