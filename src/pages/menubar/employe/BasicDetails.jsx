@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteEmployee } from "../../../redux/reducer/EmployeeReducer";
 import toast from "react-hot-toast";
 import { Plus, Users, Trash2 } from "lucide-react";
+import DeleteConfirmModal from "../../../components/ToolComponents/DeleteConfirmModal";
 
 function BasicDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.employee.employees);
+  const [deleteTargetId, setDeleteTargetId] = useState(null);
 
   return (
     <div className="p-3 bg-slate-50 min-h-screen">
@@ -24,6 +27,7 @@ function BasicDetails() {
           Register Employee
         </button>
       </div>
+
       <div className="grid grid-cols-2 gap-3 mb-3">
         <div className="bg-white rounded-md p-3 shadow-sm flex justify-between items-center">
           <div>
@@ -65,10 +69,7 @@ function BasicDetails() {
                     <td className="p-3">
                       <div className="flex justify-center">
                         <button
-                          onClick={() => {
-                            dispatch(deleteEmployee(i));
-                            toast.success("Employee deleted successfully!");
-                          }}
+                          onClick={() => setDeleteTargetId(i)}
                           className="text-red-500 hover:text-red-700 cursor-pointer transition"
                         >
                           <Trash2 size={18} />
@@ -88,6 +89,17 @@ function BasicDetails() {
           </table>
         </div>
       </div>
+
+      <DeleteConfirmModal
+        isOpen={deleteTargetId !== null}
+        title="Delete Employee"
+        message="Are you sure you want to permanently remove this employee records? This action cannot be undone."
+        onClose={() => setDeleteTargetId(null)}
+        onConfirm={() => {
+          dispatch(deleteEmployee(deleteTargetId));
+          toast.success("Employee deleted successfully!");
+        }}
+      />
     </div>
   );
 }

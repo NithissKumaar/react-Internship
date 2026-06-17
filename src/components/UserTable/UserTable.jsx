@@ -5,6 +5,7 @@ import { deleteUser } from "../../redux/reducer/UserReducer";
 import EmptyState from "./EmptySearch";
 import SkeletonRow from "../ToolComponents/SkeletonRow";
 import ToolBar from "../ToolComponents/ToolBar";
+import DeleteConfirmModal from "../ToolComponents/DeleteConfirmModal";
 
 function UserTable() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function UserTable() {
 
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [deleteTargetId, setDeleteTargetId] = useState(null);
   const perPage = 5;
 
   const filtered = users.filter((u) =>
@@ -77,7 +79,7 @@ function UserTable() {
                       <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100 transition-colors">
                         <Pencil size={12} /> Edit
                       </button>
-                      <button onClick={() => dispatch(deleteUser(user.id))} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors">
+                      <button onClick={() => setDeleteTargetId(user.id)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors">
                         <Trash2 size={12} /> Delete
                       </button>
                     </div>
@@ -103,6 +105,14 @@ function UserTable() {
           </div>
         </div>
       )}
+
+      <DeleteConfirmModal
+        isOpen={Boolean(deleteTargetId)}
+        title="Delete User"
+        message="Are you sure you want to permanently delete this account? The user will lose access immediately."
+        onClose={() => setDeleteTargetId(null)}
+        onConfirm={() => dispatch(deleteUser(deleteTargetId))}
+      />
     </div>
   );
 }
