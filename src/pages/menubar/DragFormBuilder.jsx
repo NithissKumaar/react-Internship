@@ -124,7 +124,7 @@ export default function FormBuilder() {
           <p className="text-sm text-gray-500">Drag elements to design your form</p>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={() => {navigate("/forms"); toast.success("Form saved successfully!");}} className="mt-2 inline-flex items-center gap-2 text-blue-600 font-medium text-sm cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
+          <button onClick={() => {navigate("/forms"); }} className="mt-2 inline-flex items-center gap-2 text-blue-600 font-medium text-sm cursor-pointer"><ArrowLeft size={16} />Back to Forms</button>
          
           <button onClick={handleSave} className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition cursor-pointer"><Save size={16} />Save Form</button>
         </div>

@@ -20,7 +20,7 @@ function Layout() {
   }, [location, navigate]);
 
   return (
-    <div className="min-h-screen flex flex-col ">
+    <div className="min-h-screen flex flex-col">
       <Navbar
         sidebarOpen={sidebarOpen}
         onMenuClick={() => setSidebarOpen(prev => !prev)}
@@ -31,7 +31,7 @@ function Layout() {
         onClose={() => setSidebarOpen(false)}
       />
 
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-6 scrollbar-hide" style={{ scrollBehavior: "auto" }}>
         <Outlet />
       </main>
 
