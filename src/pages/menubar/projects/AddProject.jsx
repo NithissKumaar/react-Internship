@@ -32,7 +32,7 @@ export default function AddProject() {
     toast.success("Project added successfully!");};
   return (
     <div className="p-3 bg-slate-50 min-h-screen">
-      <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-md p-5">
+      <div className="max-w-7xl mx-auto bg-white border border-slate-200 rounded-md p-5">
         <h1 className="text-lg font-semibold mb-5">Add Project</h1>
         <div className="space-y-4">
           {[

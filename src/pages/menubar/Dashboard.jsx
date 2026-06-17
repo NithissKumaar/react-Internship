@@ -11,8 +11,8 @@ function Dashboard() {
     setUsers(storedUsers);
   }, []);
   return (
-    <div className="min-h-screen ">
-      <main className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-1  space-y-5 ">
+    <div className="min-h-screen scrollbar-hide" >
+      <main className="max-full mx-auto px-4 sm:px-5 lg:px-1  space-y-5 ">
         
         <section className="rounded-3xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-white shadow-lg ">
           <div className="space-y-3">
