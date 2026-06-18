@@ -55,7 +55,7 @@ export default function InvoiceList() {
               <div
                 key={invoice.id}
                 onClick={() => navigate(`/invoice-preview/${invoice.id}`)}
-                className="bg-white border border-slate-200 rounded-2xl p-5 flex items-center justify-between gap-4 cursor-pointer hover:border-blue-200 hover:shadow-md transition"
+                className="bg-white border border-slate-200 rounded-2xl p-5 flex items-center justify-between gap-4 cursor-pointer hover:border-blue-200 hover:shadow-md transition "
               >
                 <div className="flex items-center gap-4">
                   <div className="bg-blue-50 text-blue-600 rounded-lg p-2.5">

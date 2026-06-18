@@ -8,6 +8,15 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
+    proxy: {
+      "/api": {
+        target:
+          "https://mm360.makingmindstechnologies.com",
+
+        changeOrigin: true,
+      },
+    },
   },
+
   plugins: [react(),tailwindcss()],
 })
