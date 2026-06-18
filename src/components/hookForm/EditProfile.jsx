@@ -26,13 +26,12 @@ function EditProfile({ user, setUser, close }) {
         <form autoComplete="off" onSubmit={handleSubmit(submit)} className="space-y-4">
           <input value={user.username} disabled className="w-full h-11 px-4 rounded-xl border bg-slate-100 border-slate-400 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-slate-200 focus:ring-1 focus:ring-slate-200" />
           <div>
-            <input placeholder="First Name" {...register("firstName", { required: "First name required" })} className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200" />
-            {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
+            <input placeholder="Admin Name" {...register("AdminName", { required: "Admin name required" })} className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200" />
+            {errors.AdminName && <p className="text-red-500 text-xs mt-1">{errors.AdminName.message}</p>}
           </div>
-          <input placeholder="Last Name" {...register("lastName")} className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200" />
+
           <input value={user.email} disabled className="w-full h-11 px-4 rounded-xl border bg-slate-100 border-slate-400 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-slate-200 focus:ring-1 focus:ring-slate-200" />
-          <input placeholder="Phone" {...register("phone")} className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200" />
-          <input placeholder="Website" {...register("website")} className="w-full h-11 px-4 rounded-xl border border-slate-500 bg-slate-50 text-sm outline-none transition-all duration-200 focus:border-blue-400 focus:ring-1 focus:ring-blue-200" />
+          
           <div className="flex justify-end gap-3 pt-4">
             <button type="button" onClick={close} className="px-5 h-11 border border-slate-400 rounded-xl hover:bg-slate-50 cursor-pointer">Cancel</button>
             <button type="submit" className="px-5 h-11 bg-blue-600 text-white rounded-xl hover:bg-blue-700 cursor-pointer">Save</button>
