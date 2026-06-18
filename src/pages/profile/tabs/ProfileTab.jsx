@@ -8,9 +8,16 @@ function ProfileTab({
   user,
   setOpen,
 }) {
-  const fields = profileFields(user);
 
-  return (
+console.log(
+"PROFILE USER",
+user
+);
+
+const fields =
+profileFields(user);
+
+return (
     <>
       <div className="mt-8">
 

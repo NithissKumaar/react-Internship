@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { LayoutDashboard, Users, LogOut, X, Contact, Folder, FileBarChart, Receipt, ClipboardList, MessageSquareReply } from "lucide-react";
 
 const roleMenus = {
-  Admin: [
+  admin: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/users", label: "Users", icon: Users },
     { to: "/employee", label: "Employee", icon: Contact },
@@ -17,7 +17,7 @@ const roleMenus = {
     { to: "/projects", label: "Projects", icon: Folder },
     { to: "/invoices", label: "Invoices", icon: Receipt },
   ],
-  Employee: [
+  employee: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/profile", label: "Profile", icon: Contact },
     { to: "/forms", label: "Forms", icon: ClipboardList },
@@ -44,7 +44,7 @@ function Sidebar({ isOpen, onClose }) {
           ))}
         </nav>
         <div className="p-3">
-          <Link to="/" onClick={() => { localStorage.removeItem("role"); onClose(); }} className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50">
+          <Link to="/login/admin" onClick={() => { localStorage.removeItem("role"); navigate("/login/admin"); }} className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50">
             <LogOut size={18} />
             Sign Out
           </Link>

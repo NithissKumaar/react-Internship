@@ -30,7 +30,7 @@ function DropDown() {
   const logout = () => {
     localStorage.removeItem("role");
     setDropdownOpen(false);
-    navigate("/");
+    navigate("/login/admin");
   };
 
   return (

@@ -27,14 +27,14 @@ function UserTable() {
   const current = filtered.slice((page - 1) * perPage, page * perPage);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div className=" bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <ToolBar search={search} setSearch={setSearch} />
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-full">
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-slate-50 border-b border-slate-100">
-              {["#", "Name", "Username", "Email", "Phone", "Website", "Actions"].map((h) => (
+              {["SNO", "Name", "Username", "Email", "Phone", "Website", "Actions"].map((h) => (
                 <th key={h} className="px-6 py-3.5 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">
                   {h}
                 </th>
