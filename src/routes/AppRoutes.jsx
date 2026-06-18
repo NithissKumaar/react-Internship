@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "react-hot-toast";
 import Layout from "../Layouts/Layouts";
 import ProtectedRoute from "./ProtectedRoute";
-import Login from "../pages/menubar/Login";
+
 import RoleLogin from "../pages/menubar/RoleLogin";
 import Dashboard from "../pages/menubar/Dashboard";
 import Profile from "../pages/profile/Profile";
@@ -57,7 +57,7 @@ function AppRoutes() {
         }}
       />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Navigate to="/login/admin" replace />} />
         <Route path="/login/:role" element={<RoleLogin />} />
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<ProtectedRoute roles={["Admin", "Manager", "Employee"]}><Dashboard /></ProtectedRoute>} />

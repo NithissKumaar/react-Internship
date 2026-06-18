@@ -10,6 +10,8 @@ import userStorageMiddleware from "../redux/middleware/userStorageMiddleware";
 import responseStorageMiddleware from "../redux/middleware/ResponseStorageMiddleware";
 import invoiceSlice from "../redux/reducer/invoiceReducer";
 import {invoiceMiddleware} from "../redux/middleware/InvoiceMiddleware";
+import authSlice from "../redux/reducer/authReducer";
+import authMiddleware  from "../redux/middleware/authMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +21,7 @@ export const store = configureStore({
     forms: formReducer,
     responses: responseReducer,
     invoices: invoiceSlice,
+    auth: authSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(
     localStorageMiddleware,
@@ -26,5 +29,6 @@ export const store = configureStore({
     userStorageMiddleware,
     responseStorageMiddleware,
     invoiceMiddleware,
+    authMiddleware,
   ),
 });
