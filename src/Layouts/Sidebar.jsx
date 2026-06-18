@@ -12,7 +12,7 @@ const roleMenus = {
     { to: "/responses", label: "Responses", icon: MessageSquareReply },
     { to: "/invoices", label: "Invoices", icon: Receipt },
   ],
-  Manager: [
+  manager: [
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { to: "/projects", label: "Projects", icon: Folder },
     { to: "/invoices", label: "Invoices", icon: Receipt },

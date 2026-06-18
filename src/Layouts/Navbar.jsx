@@ -10,15 +10,8 @@ function Navbar({ onMenuClick, sidebarOpen }) {
       <div className="px-4 h-16 flex items-center justify-between">
 
           <div className="flex items-center gap-2">
-          {sidebarOpen && (
-              <button
-            onClick={onMenuClick}
-            className="p-1 rounded-lg hover:bg-slate-100 cursor-pointer animation duration-300 ease-in-out  "
-          >
-            <X size={20} />
-          </button>
-            )}
-            {!sidebarOpen && (
+          
+          
 
           <button
             onClick={onMenuClick}
@@ -26,7 +19,7 @@ function Navbar({ onMenuClick, sidebarOpen }) {
           >
             <Menu size={20} />
           </button>
-            )}
+            
 
           <Link to="/dashboard" className="flex items-center gap-2">
             <div className="w-8 h-8 overflow-hidden">
