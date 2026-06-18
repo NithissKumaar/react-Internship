@@ -101,7 +101,7 @@ function LoginForm({ role = "admin" }) {
           </button>
         </form>
       </div>
-      <p className="text-center text-xs text-slate-600 mt-5">Demo: username / password</p>
+      <p className="text-center text-xs text-slate-600 mt-5"></p>
     </>
   );
 }
