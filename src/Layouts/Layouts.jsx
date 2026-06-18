@@ -7,7 +7,7 @@ import Footer from "./Footer";
 function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     if (location.state?.sidebarOpen) {

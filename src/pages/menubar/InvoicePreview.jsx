@@ -30,7 +30,7 @@ export default function InvoicePreview() {
           </style>
         </head>
         <body>
-          <p style="text-align: center; color: #666; font-size: 12px; text-transform: uppercase;">Makers Mind</p>
+          <h1 style="text-align: center; color: #000; text-transform: uppercase;">Making Minds</h1>
           ${printContents}
         </body>
       </html>
